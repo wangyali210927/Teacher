@@ -1,4 +1,5 @@
-﻿@{
+﻿@*@model*@ 
+@{
     ViewBag.Title = "废气监测报表";
     ViewData["dataSelector"] = ".js-table";
     Layout = "~/Views/Shared/_BasicLayout.cshtml";
@@ -53,17 +54,27 @@
                         @* 筛选查询部分 *@
                         <div class="row">
                             <div class="ibox float-e-margins">
-
                                 <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
                                     <div class="row">
                                         <div class="form-group col-sm-4">
                                             <label class="col-sm-5 control-label">污染点名称：</label>
                                             <div class="col-sm-6">
+                                                <select name="PollutantPoint" data-placeholder="业务状态..." class="chosen-select-width col-sm-11">
+                                                    <option value="">请选择污染源</option>
+                                                    @{
+                                                        
+                                                    }
+                                                    <option value="0">污染点1</option>
+                                                    <option value="1">污染点2</option>
+                                                    <option value="2">污染点3</option>
+                                                </select>
+                                            </div>
+                                            @*<div class="col-sm-6">
                                                 <input name="PollutantName" minlength="2" type="text" class="form-control">
                                             </div>
                                             <div class="col-sm-1">
                                                 <button class="btn btn-primary" type="submit">选择</button>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <label class="col-sm-5 control-label">污染点：</label>

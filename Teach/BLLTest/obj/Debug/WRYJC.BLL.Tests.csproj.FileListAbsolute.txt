@@ -9,3 +9,14 @@ D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.DAL.pdb
 D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\Teach\BLLTest\obj\Debug\BLLTest.dll
 D:\USUAL\Teach\BLLTest\obj\Debug\BLLTest.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\BLLTest.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\BLLTest.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.BLL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.DAL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.Domain.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.BLL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.DAL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.Domain.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\WRYJC.BLL.Tests.csprojResolveAssemblyReference.cache
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\BLLTest.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\BLLTest.pdb

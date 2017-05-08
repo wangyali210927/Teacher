@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="GasData\GasDayDataDALImpl.cs" />
     <Compile Include="GasData\IGasDayDataDAL.cs" />
+    <Compile Include="IEnterpriseDAL.cs" />
     <Compile Include="ISysMenuDAL.cs" />
     <Compile Include="RoleAndPower\ISysPowerDAL.cs" />
     <Compile Include="RoleAndPower\ISysRoleAndSysPowerDAL.cs" />
