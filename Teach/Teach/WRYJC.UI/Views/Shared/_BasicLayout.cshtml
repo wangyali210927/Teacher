@@ -1,0 +1,68 @@
+﻿@{
+    var cssModules = ViewBag.CssModules as List<string>;
+    var jsModules = ViewBag.JsModules as List<string>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @*<link rel="shortcut icon" href="favicon.ico">*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/style.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="~/Content/plugins/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    @{
+        if (cssModules != null)
+        {
+            foreach (var module in cssModules)
+            {
+                if (module.StartsWith("http://"))
+                {
+                    <link href="@(module)" rel="stylesheet">
+
+                }
+                else
+                {
+                    <link href="~/@(module)" rel="stylesheet">
+                }
+            }
+        }
+    }
+    <script src="~/Scripts/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/enumHandler.js"></script>
+    <script src="~/Scripts/content.min.js"></script>
+    <script src="~/Scripts/common/ui.js"></script>
+    <script src="~/Scripts/enumHandler.js"></script>
+    @{
+        if (jsModules != null)
+        {
+            foreach (var module in jsModules)
+            {
+                if (module.StartsWith("http://"))
+                {
+                    <script src="@(module)" charset="utf-8"></script>
+
+                }
+                else
+                {
+                    <script src="~/@(module)" charset="utf-8"></script>
+                }
+            }
+        }
+    }
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

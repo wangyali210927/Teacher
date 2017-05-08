@@ -1,0 +1,7 @@
+D:\USUAL\Teach\DALTest\bin\Debug\DALTest.dll
+D:\USUAL\Teach\DALTest\bin\Debug\DALTest.pdb
+D:\USUAL\Teach\DALTest\bin\Debug\WRYJC.DAL.dll
+D:\USUAL\Teach\DALTest\bin\Debug\WRYJC.DAL.pdb
+D:\USUAL\Teach\DALTest\obj\Debug\DALTest.csprojResolveAssemblyReference.cache
+D:\USUAL\Teach\DALTest\obj\Debug\DALTest.dll
+D:\USUAL\Teach\DALTest\obj\Debug\DALTest.pdb

@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<html style="height:100%; ">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>污染源在线监测系统</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet">
+    <link href="~/Content/style.min.css" rel="stylesheet">
+    <link href="~/Content/login.min.css" rel="stylesheet">
+    <script>if (window.top !== window.self) { window.top.location = window.location; }</script>
+
+    <script src="~/scripts/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script src="~/scripts/jquery/jquery.form.js"></script>
+    <script src="~/Scripts/plugins/validate/jquery.validate.min.js"></script>
+    <script src="~/Scripts/plugins/validate/messages_zh.min.js"></script>
+    <script src="~/Scripts/plugins/layer/layer.min.js"></script>
+    <script src="~/Scripts/common/utilities.js"></script>
+    
+    <script src="~/Scripts/common/ui.js"></script>
+    <script src="~/Scripts/common/form.js"></script>
+    <script src="~/scripts/init.js"></script>
+</head>
+
+<body class="gray-bg" style="width: 100%; height: auto; background: url(../Content/img/LoginBackGround.jpg) no-repeat center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+    <div class=" text-center" style="margin:6% auto 0;width:100%;">
+        <div style="font-size:40px;">污染源在线监测系统</div>
+    </div>
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <form class="js-form" id="loginform" role="form" action="@Url.Action("Login","Login")" nextstepurl="@Url.Action("Index", "Manage")">
+                <div class="form-group">
+                    <input name="loginName" type="text" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+                <div style="font:x-large;">@ViewData["message"]</div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

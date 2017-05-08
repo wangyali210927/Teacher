@@ -1,0 +1,9 @@
+D:\USUAL\Teach\BLLTest\bin\Debug\BLLTest.dll
+D:\USUAL\Teach\BLLTest\bin\Debug\BLLTest.pdb
+D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.BLL.dll
+D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.DAL.dll
+D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.BLL.pdb
+D:\USUAL\Teach\BLLTest\bin\Debug\WRYJC.DAL.pdb
+D:\USUAL\Teach\BLLTest\obj\Debug\BLLTest.csprojResolveAssemblyReference.cache
+D:\USUAL\Teach\BLLTest\obj\Debug\BLLTest.dll
+D:\USUAL\Teach\BLLTest\obj\Debug\BLLTest.pdb

@@ -1,0 +1,5 @@
+D:\USUAL\Teach\WRYJC.Domain\bin\Debug\WRYJC.Domain.dll
+D:\USUAL\Teach\WRYJC.Domain\bin\Debug\WRYJC.Domain.pdb
+D:\USUAL\Teach\WRYJC.Domain\obj\Debug\WRYJC.Domain.csprojResolveAssemblyReference.cache
+D:\USUAL\Teach\WRYJC.Domain\obj\Debug\WRYJC.Domain.dll
+D:\USUAL\Teach\WRYJC.Domain\obj\Debug\WRYJC.Domain.pdb

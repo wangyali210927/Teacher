@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Teach" Class="DataWRYJCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Teach;User ID=sa" SettingsObjectName="WRYJC.DAL.Properties.Settings" SettingsPropertyName="TeachConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SysRoleAndSysPower" Member="SysRoleAndSysPower">
+    <Type Name="SysRoleAndSysPower">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SysRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SysPowerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SysPower_SysRoleAndSysPower" Member="SysPower" ThisKey="Id" OtherKey="Id" Type="SysPower" IsForeignKey="true" />
+      <Association Name="SysRole_SysRoleAndSysPower" Member="SysRole" ThisKey="SysRoleId" OtherKey="Id" Type="SysRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GasDayData" Member="GasDayData">
+    <Type Name="GasDayData">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WasteObjectID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ReceTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StrengthMax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StrengthAvg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StrengthMin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FixStrength" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FlowMax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FlowAvg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FlowMin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FixFlow" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsException" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CorrectUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CorrectUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DataType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CorrectCause" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CorrectTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysMenu" Member="SysMenu">
+    <Type Name="SysMenu">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuIcon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MenuName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="MenuUrl" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="TheOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SysMenu_SysMenu" Member="SysMenu2" ThisKey="ID" OtherKey="MasterID" Type="SysMenu" />
+      <Association Name="SysMenu_SysPower" Member="SysPower" ThisKey="ID" OtherKey="SysMenuID" Type="SysPower" />
+      <Association Name="SysMenu_SysMenu" Member="SysMenu1" ThisKey="MasterID" OtherKey="ID" Type="SysMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysPower" Member="SysPower">
+    <Type Name="SysPower">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SysMenuID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PowerIcon" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PowerName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PowerUrl" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SysPower_SysRoleAndSysPower" Member="SysRoleAndSysPower" ThisKey="Id" OtherKey="Id" Type="SysRoleAndSysPower" Cardinality="One" />
+      <Association Name="SysMenu_SysPower" Member="SysMenu" ThisKey="SysMenuID" OtherKey="ID" Type="SysMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysRole" Member="SysRole">
+    <Type Name="SysRole">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DelTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="InsertTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SysRole_SysRoleAndSysPower" Member="SysRoleAndSysPower" ThisKey="Id" OtherKey="SysRoleId" Type="SysRoleAndSysPower" />
+      <Association Name="SysRole_SysUserAndSysRole" Member="SysUserAndSysRole" ThisKey="Id" OtherKey="SysRoleId" Type="SysUserAndSysRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysUserAndSysRole" Member="SysUserAndSysRole">
+    <Type Name="SysUserAndSysRole">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SysUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SysRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SysRole_SysUserAndSysRole" Member="SysRole" ThisKey="SysRoleId" OtherKey="Id" Type="SysRole" IsForeignKey="true" />
+      <Association Name="SysUser_SysUserAndSysRole" Member="SysUser" ThisKey="SysUserId" OtherKey="Id" Type="SysUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysUser" Member="SysUser">
+    <Type Name="SysUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pwd" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TrueName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IdCard" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HeadIcon" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="WeixinId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DelTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="InsertTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SysUser_SysUserAndSysRole" Member="SysUserAndSysRole" ThisKey="Id" OtherKey="SysUserId" Type="SysUserAndSysRole" />
+    </Type>
+  </Table>
+</Database>
