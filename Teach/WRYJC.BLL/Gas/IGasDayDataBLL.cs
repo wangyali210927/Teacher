@@ -16,10 +16,12 @@ namespace WRYJC.BLL
     public interface IGasDataDisplayBLL
     {
         Response<GasDayData> GetDayDataByID(decimal id);
-        //张晗
+        
         Response<GasDayData> GetDayDataByDate(DateTime date);
-        //张彦
+        
         Response<GasDayData> GetDayDataByDataRange(DateTime from, DateTime to);
 
+        //张晗
+        //Response<GasDayData> getDayDataByPollutionPointID(decimal id);
     }
 }

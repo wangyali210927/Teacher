@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WRYJC.BLL.Gas
 {
-    public interface IGasRTDataBLL
+    public interface IGasMinDataBLL
     {
     }
 }

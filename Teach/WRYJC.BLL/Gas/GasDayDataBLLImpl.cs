@@ -15,25 +15,39 @@ namespace WRYJC.BLL
     */
     public class GasDataDisplayBLLImpl : IGasDataDisplayBLL
     {
-        private IGasDayDataDAL GasDayData = new GasDayDataDALImpl();
+        private IGasDayDataDAL gasDayDataDAL = new GasDayDataDALImpl();
         public Response<GasDayData> GetDayDataByID(decimal id)
         {
-            Response<GasDayData> data = GasDayData.GetDayDataByID(0);
+            Response<GasDayData> data = gasDayDataDAL.GetDayDataByID(0);
             //此处暂时无逻辑内容判断，直接返回data
             return data;
         }
 
-        //张晗
         public Response<GasDayData> GetDayDataByDate(DateTime date)
         {
-            Response<GasDayData> ret = null;
+            Response<GasDayData> res = gasDayDataDAL.GetDayDataByDateRange(date,date);
+            if (!res.isSuccess)
+            {
+                return new Response<GasDayData>()
+                {
+                    isSuccess = false
+                };
+            }
+            Response<GasDayData> ret = res;
             return ret;
         }
-        //张彦
+        
         public Response<GasDayData> GetDayDataByDataRange(DateTime from, DateTime to)
         {
-            Response<GasDayData> ret = null;
-            List<GasDayData> res = null;
+            Response<GasDayData> res = gasDayDataDAL.GetDayDataByDateRange(from,to);
+            if (!res.isSuccess)
+            {
+                return new Response<GasDayData>()
+                {
+                    isSuccess = false
+                };
+            }
+            Response<GasDayData> ret = res;
             return ret;
         }
     }

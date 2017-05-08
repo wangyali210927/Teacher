@@ -8,5 +8,6 @@ namespace WRYJC.BLL.Gas
 {
     public class GasHourDataBLLImpl : IGasHourDataBLL
     {
+
     }
 }
