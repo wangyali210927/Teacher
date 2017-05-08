@@ -30,12 +30,15 @@ namespace WRYJC.DAL
 		
     #region 可扩展性方法定义
     partial void OnCreated();
-    partial void InsertSysRoleAndSysPower(SysRoleAndSysPower instance);
-    partial void UpdateSysRoleAndSysPower(SysRoleAndSysPower instance);
-    partial void DeleteSysRoleAndSysPower(SysRoleAndSysPower instance);
+    partial void InsertEnterprise(Enterprise instance);
+    partial void UpdateEnterprise(Enterprise instance);
+    partial void DeleteEnterprise(Enterprise instance);
     partial void InsertGasDayData(GasDayData instance);
     partial void UpdateGasDayData(GasDayData instance);
     partial void DeleteGasDayData(GasDayData instance);
+    partial void InsertPollutionPoint(PollutionPoint instance);
+    partial void UpdatePollutionPoint(PollutionPoint instance);
+    partial void DeletePollutionPoint(PollutionPoint instance);
     partial void InsertSysMenu(SysMenu instance);
     partial void UpdateSysMenu(SysMenu instance);
     partial void DeleteSysMenu(SysMenu instance);
@@ -45,12 +48,15 @@ namespace WRYJC.DAL
     partial void InsertSysRole(SysRole instance);
     partial void UpdateSysRole(SysRole instance);
     partial void DeleteSysRole(SysRole instance);
-    partial void InsertSysUserAndSysRole(SysUserAndSysRole instance);
-    partial void UpdateSysUserAndSysRole(SysUserAndSysRole instance);
-    partial void DeleteSysUserAndSysRole(SysUserAndSysRole instance);
     partial void InsertSysUser(SysUser instance);
     partial void UpdateSysUser(SysUser instance);
     partial void DeleteSysUser(SysUser instance);
+    partial void InsertSysRoleAndSysPower(SysRoleAndSysPower instance);
+    partial void UpdateSysRoleAndSysPower(SysRoleAndSysPower instance);
+    partial void DeleteSysRoleAndSysPower(SysRoleAndSysPower instance);
+    partial void InsertSysUserAndSysRole(SysUserAndSysRole instance);
+    partial void UpdateSysUserAndSysRole(SysUserAndSysRole instance);
+    partial void DeleteSysUserAndSysRole(SysUserAndSysRole instance);
     #endregion
 		
 		public DataWRYJCDataContext() : 
@@ -83,11 +89,11 @@ namespace WRYJC.DAL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<SysRoleAndSysPower> SysRoleAndSysPower
+		public System.Data.Linq.Table<Enterprise> Enterprise
 		{
 			get
 			{
-				return this.GetTable<SysRoleAndSysPower>();
+				return this.GetTable<Enterprise>();
 			}
 		}
 		
@@ -96,6 +102,14 @@ namespace WRYJC.DAL
 			get
 			{
 				return this.GetTable<GasDayData>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PollutionPoint> PollutionPoint
+		{
+			get
+			{
+				return this.GetTable<PollutionPoint>();
 			}
 		}
 		
@@ -123,14 +137,6 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<SysUserAndSysRole> SysUserAndSysRole
-		{
-			get
-			{
-				return this.GetTable<SysUserAndSysRole>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SysUser> SysUser
 		{
 			get
@@ -138,23 +144,107 @@ namespace WRYJC.DAL
 				return this.GetTable<SysUser>();
 			}
 		}
+		
+		public System.Data.Linq.Table<SysRoleAndSysPower> SysRoleAndSysPower
+		{
+			get
+			{
+				return this.GetTable<SysRoleAndSysPower>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SysUserAndSysRole> SysUserAndSysRole
+		{
+			get
+			{
+				return this.GetTable<SysUserAndSysRole>();
+			}
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysRoleAndSysPower")]
-	public partial class SysRoleAndSysPower : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Enterprise")]
+	public partial class Enterprise : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private int _SysRoleId;
+		private string _Alias;
 		
-		private int _SysPowerId;
+		private string _Name;
 		
-		private EntityRef<SysPower> _SysPower;
+		private System.Nullable<int> _AttachedTo;
 		
-		private EntityRef<SysRole> _SysRole;
+		private string _Address;
+		
+		private System.Nullable<decimal> _Longitude;
+		
+		private System.Nullable<decimal> _Latitude;
+		
+		private string _LegalCode;
+		
+		private string _LegalName;
+		
+		private System.Nullable<int> _ConcernDegree;
+		
+		private System.Nullable<int> _AdministrationZone;
+		
+		private System.Nullable<int> _UnitType;
+		
+		private System.Nullable<int> _RegistrationType;
+		
+		private System.Nullable<int> _MonitorType;
+		
+		private System.Nullable<int> _IndustryType;
+		
+		private System.Nullable<int> _Scale;
+		
+		private System.Nullable<int> _RegionCode;
+		
+		private System.Nullable<int> _Watershed;
+		
+		private System.Nullable<decimal> _TotalArea;
+		
+		private System.Nullable<int> _IsMonitor;
+		
+		private System.Nullable<System.DateTime> _OperationDate;
+		
+		private System.Nullable<int> _Is30KPower;
+		
+		private string _EnterpriseEnvironmentDept;
+		
+		private string _EnvironmentPrincipal;
+		
+		private System.Nullable<int> _EnvironmentPersonCount;
+		
+		private string _MailingAddress;
+		
+		private string _OfficePhone;
+		
+		private string _MobilePhone;
+		
+		private string _Bank;
+		
+		private string _BankAccount;
+		
+		private string _Fax;
+		
+		private string _ConnectPerson;
+		
+		private string _Zipcode;
+		
+		private string _Website;
+		
+		private string _Email;
+		
+		private System.Nullable<int> _OnlineStatus;
+		
+		private System.Nullable<int> _OperationStatus;
+		
+		private System.Nullable<int> _StartStatus;
+		
+		private string _Remark;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -162,16 +252,86 @@ namespace WRYJC.DAL
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnSysRoleIdChanging(int value);
-    partial void OnSysRoleIdChanged();
-    partial void OnSysPowerIdChanging(int value);
-    partial void OnSysPowerIdChanged();
+    partial void OnAliasChanging(string value);
+    partial void OnAliasChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAttachedToChanging(System.Nullable<int> value);
+    partial void OnAttachedToChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnLongitudeChanging(System.Nullable<decimal> value);
+    partial void OnLongitudeChanged();
+    partial void OnLatitudeChanging(System.Nullable<decimal> value);
+    partial void OnLatitudeChanged();
+    partial void OnLegalCodeChanging(string value);
+    partial void OnLegalCodeChanged();
+    partial void OnLegalNameChanging(string value);
+    partial void OnLegalNameChanged();
+    partial void OnConcernDegreeChanging(System.Nullable<int> value);
+    partial void OnConcernDegreeChanged();
+    partial void OnAdministrationZoneChanging(System.Nullable<int> value);
+    partial void OnAdministrationZoneChanged();
+    partial void OnUnitTypeChanging(System.Nullable<int> value);
+    partial void OnUnitTypeChanged();
+    partial void OnRegistrationTypeChanging(System.Nullable<int> value);
+    partial void OnRegistrationTypeChanged();
+    partial void OnMonitorTypeChanging(System.Nullable<int> value);
+    partial void OnMonitorTypeChanged();
+    partial void OnIndustryTypeChanging(System.Nullable<int> value);
+    partial void OnIndustryTypeChanged();
+    partial void OnScaleChanging(System.Nullable<int> value);
+    partial void OnScaleChanged();
+    partial void OnRegionCodeChanging(System.Nullable<int> value);
+    partial void OnRegionCodeChanged();
+    partial void OnWatershedChanging(System.Nullable<int> value);
+    partial void OnWatershedChanged();
+    partial void OnTotalAreaChanging(System.Nullable<decimal> value);
+    partial void OnTotalAreaChanged();
+    partial void OnIsMonitorChanging(System.Nullable<int> value);
+    partial void OnIsMonitorChanged();
+    partial void OnOperationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOperationDateChanged();
+    partial void OnIs30KPowerChanging(System.Nullable<int> value);
+    partial void OnIs30KPowerChanged();
+    partial void OnEnterpriseEnvironmentDeptChanging(string value);
+    partial void OnEnterpriseEnvironmentDeptChanged();
+    partial void OnEnvironmentPrincipalChanging(string value);
+    partial void OnEnvironmentPrincipalChanged();
+    partial void OnEnvironmentPersonCountChanging(System.Nullable<int> value);
+    partial void OnEnvironmentPersonCountChanged();
+    partial void OnMailingAddressChanging(string value);
+    partial void OnMailingAddressChanged();
+    partial void OnOfficePhoneChanging(string value);
+    partial void OnOfficePhoneChanged();
+    partial void OnMobilePhoneChanging(string value);
+    partial void OnMobilePhoneChanged();
+    partial void OnBankChanging(string value);
+    partial void OnBankChanged();
+    partial void OnBankAccountChanging(string value);
+    partial void OnBankAccountChanged();
+    partial void OnFaxChanging(string value);
+    partial void OnFaxChanged();
+    partial void OnConnectPersonChanging(string value);
+    partial void OnConnectPersonChanged();
+    partial void OnZipcodeChanging(string value);
+    partial void OnZipcodeChanged();
+    partial void OnWebsiteChanging(string value);
+    partial void OnWebsiteChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnOnlineStatusChanging(System.Nullable<int> value);
+    partial void OnOnlineStatusChanged();
+    partial void OnOperationStatusChanging(System.Nullable<int> value);
+    partial void OnOperationStatusChanged();
+    partial void OnStartStatusChanging(System.Nullable<int> value);
+    partial void OnStartStatusChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
     #endregion
 		
-		public SysRoleAndSysPower()
+		public Enterprise()
 		{
-			this._SysPower = default(EntityRef<SysPower>);
-			this._SysRole = default(EntityRef<SysRole>);
 			OnCreated();
 		}
 		
@@ -186,10 +346,6 @@ namespace WRYJC.DAL
 			{
 				if ((this._Id != value))
 				{
-					if (this._SysPower.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnIdChanging(value);
 					this.SendPropertyChanging();
 					this._Id = value;
@@ -199,114 +355,762 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysRoleId", DbType="Int NOT NULL")]
-		public int SysRoleId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alias", DbType="NVarChar(50)")]
+		public string Alias
 		{
 			get
 			{
-				return this._SysRoleId;
+				return this._Alias;
 			}
 			set
 			{
-				if ((this._SysRoleId != value))
+				if ((this._Alias != value))
 				{
-					if (this._SysRole.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSysRoleIdChanging(value);
+					this.OnAliasChanging(value);
 					this.SendPropertyChanging();
-					this._SysRoleId = value;
-					this.SendPropertyChanged("SysRoleId");
-					this.OnSysRoleIdChanged();
+					this._Alias = value;
+					this.SendPropertyChanged("Alias");
+					this.OnAliasChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysPowerId", DbType="Int NOT NULL")]
-		public int SysPowerId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
 		{
 			get
 			{
-				return this._SysPowerId;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._SysPowerId != value))
+				if ((this._Name != value))
 				{
-					this.OnSysPowerIdChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
-					this._SysPowerId = value;
-					this.SendPropertyChanged("SysPowerId");
-					this.OnSysPowerIdChanged();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysPower_SysRoleAndSysPower", Storage="_SysPower", ThisKey="Id", OtherKey="Id", IsForeignKey=true)]
-		public SysPower SysPower
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AttachedTo", DbType="Int")]
+		public System.Nullable<int> AttachedTo
 		{
 			get
 			{
-				return this._SysPower.Entity;
+				return this._AttachedTo;
 			}
 			set
 			{
-				SysPower previousValue = this._SysPower.Entity;
-				if (((previousValue != value) 
-							|| (this._SysPower.HasLoadedOrAssignedValue == false)))
+				if ((this._AttachedTo != value))
 				{
+					this.OnAttachedToChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SysPower.Entity = null;
-						previousValue.SysRoleAndSysPower = null;
-					}
-					this._SysPower.Entity = value;
-					if ((value != null))
-					{
-						value.SysRoleAndSysPower = this;
-						this._Id = value.Id;
-					}
-					else
-					{
-						this._Id = default(int);
-					}
-					this.SendPropertyChanged("SysPower");
+					this._AttachedTo = value;
+					this.SendPropertyChanged("AttachedTo");
+					this.OnAttachedToChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysRole_SysRoleAndSysPower", Storage="_SysRole", ThisKey="SysRoleId", OtherKey="Id", IsForeignKey=true)]
-		public SysRole SysRole
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(150)")]
+		public string Address
 		{
 			get
 			{
-				return this._SysRole.Entity;
+				return this._Address;
 			}
 			set
 			{
-				SysRole previousValue = this._SysRole.Entity;
-				if (((previousValue != value) 
-							|| (this._SysRole.HasLoadedOrAssignedValue == false)))
+				if ((this._Address != value))
 				{
+					this.OnAddressChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SysRole.Entity = null;
-						previousValue.SysRoleAndSysPower.Remove(this);
-					}
-					this._SysRole.Entity = value;
-					if ((value != null))
-					{
-						value.SysRoleAndSysPower.Add(this);
-						this._SysRoleId = value.Id;
-					}
-					else
-					{
-						this._SysRoleId = default(int);
-					}
-					this.SendPropertyChanged("SysRole");
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Longitude", DbType="Decimal(10,7)")]
+		public System.Nullable<decimal> Longitude
+		{
+			get
+			{
+				return this._Longitude;
+			}
+			set
+			{
+				if ((this._Longitude != value))
+				{
+					this.OnLongitudeChanging(value);
+					this.SendPropertyChanging();
+					this._Longitude = value;
+					this.SendPropertyChanged("Longitude");
+					this.OnLongitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Decimal(10,7)")]
+		public System.Nullable<decimal> Latitude
+		{
+			get
+			{
+				return this._Latitude;
+			}
+			set
+			{
+				if ((this._Latitude != value))
+				{
+					this.OnLatitudeChanging(value);
+					this.SendPropertyChanging();
+					this._Latitude = value;
+					this.SendPropertyChanged("Latitude");
+					this.OnLatitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalCode", DbType="NVarChar(50)")]
+		public string LegalCode
+		{
+			get
+			{
+				return this._LegalCode;
+			}
+			set
+			{
+				if ((this._LegalCode != value))
+				{
+					this.OnLegalCodeChanging(value);
+					this.SendPropertyChanging();
+					this._LegalCode = value;
+					this.SendPropertyChanged("LegalCode");
+					this.OnLegalCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalName", DbType="NVarChar(30)")]
+		public string LegalName
+		{
+			get
+			{
+				return this._LegalName;
+			}
+			set
+			{
+				if ((this._LegalName != value))
+				{
+					this.OnLegalNameChanging(value);
+					this.SendPropertyChanging();
+					this._LegalName = value;
+					this.SendPropertyChanged("LegalName");
+					this.OnLegalNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConcernDegree", DbType="Int")]
+		public System.Nullable<int> ConcernDegree
+		{
+			get
+			{
+				return this._ConcernDegree;
+			}
+			set
+			{
+				if ((this._ConcernDegree != value))
+				{
+					this.OnConcernDegreeChanging(value);
+					this.SendPropertyChanging();
+					this._ConcernDegree = value;
+					this.SendPropertyChanged("ConcernDegree");
+					this.OnConcernDegreeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdministrationZone", DbType="Int")]
+		public System.Nullable<int> AdministrationZone
+		{
+			get
+			{
+				return this._AdministrationZone;
+			}
+			set
+			{
+				if ((this._AdministrationZone != value))
+				{
+					this.OnAdministrationZoneChanging(value);
+					this.SendPropertyChanging();
+					this._AdministrationZone = value;
+					this.SendPropertyChanged("AdministrationZone");
+					this.OnAdministrationZoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitType", DbType="Int")]
+		public System.Nullable<int> UnitType
+		{
+			get
+			{
+				return this._UnitType;
+			}
+			set
+			{
+				if ((this._UnitType != value))
+				{
+					this.OnUnitTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UnitType = value;
+					this.SendPropertyChanged("UnitType");
+					this.OnUnitTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegistrationType", DbType="Int")]
+		public System.Nullable<int> RegistrationType
+		{
+			get
+			{
+				return this._RegistrationType;
+			}
+			set
+			{
+				if ((this._RegistrationType != value))
+				{
+					this.OnRegistrationTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RegistrationType = value;
+					this.SendPropertyChanged("RegistrationType");
+					this.OnRegistrationTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonitorType", DbType="Int")]
+		public System.Nullable<int> MonitorType
+		{
+			get
+			{
+				return this._MonitorType;
+			}
+			set
+			{
+				if ((this._MonitorType != value))
+				{
+					this.OnMonitorTypeChanging(value);
+					this.SendPropertyChanging();
+					this._MonitorType = value;
+					this.SendPropertyChanged("MonitorType");
+					this.OnMonitorTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IndustryType", DbType="Int")]
+		public System.Nullable<int> IndustryType
+		{
+			get
+			{
+				return this._IndustryType;
+			}
+			set
+			{
+				if ((this._IndustryType != value))
+				{
+					this.OnIndustryTypeChanging(value);
+					this.SendPropertyChanging();
+					this._IndustryType = value;
+					this.SendPropertyChanged("IndustryType");
+					this.OnIndustryTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Scale", DbType="Int")]
+		public System.Nullable<int> Scale
+		{
+			get
+			{
+				return this._Scale;
+			}
+			set
+			{
+				if ((this._Scale != value))
+				{
+					this.OnScaleChanging(value);
+					this.SendPropertyChanging();
+					this._Scale = value;
+					this.SendPropertyChanged("Scale");
+					this.OnScaleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="Int")]
+		public System.Nullable<int> RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Watershed", DbType="Int")]
+		public System.Nullable<int> Watershed
+		{
+			get
+			{
+				return this._Watershed;
+			}
+			set
+			{
+				if ((this._Watershed != value))
+				{
+					this.OnWatershedChanging(value);
+					this.SendPropertyChanging();
+					this._Watershed = value;
+					this.SendPropertyChanged("Watershed");
+					this.OnWatershedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalArea", DbType="Decimal(10,3)")]
+		public System.Nullable<decimal> TotalArea
+		{
+			get
+			{
+				return this._TotalArea;
+			}
+			set
+			{
+				if ((this._TotalArea != value))
+				{
+					this.OnTotalAreaChanging(value);
+					this.SendPropertyChanging();
+					this._TotalArea = value;
+					this.SendPropertyChanged("TotalArea");
+					this.OnTotalAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsMonitor", DbType="Int")]
+		public System.Nullable<int> IsMonitor
+		{
+			get
+			{
+				return this._IsMonitor;
+			}
+			set
+			{
+				if ((this._IsMonitor != value))
+				{
+					this.OnIsMonitorChanging(value);
+					this.SendPropertyChanging();
+					this._IsMonitor = value;
+					this.SendPropertyChanged("IsMonitor");
+					this.OnIsMonitorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperationDate", DbType="Date")]
+		public System.Nullable<System.DateTime> OperationDate
+		{
+			get
+			{
+				return this._OperationDate;
+			}
+			set
+			{
+				if ((this._OperationDate != value))
+				{
+					this.OnOperationDateChanging(value);
+					this.SendPropertyChanging();
+					this._OperationDate = value;
+					this.SendPropertyChanged("OperationDate");
+					this.OnOperationDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Is30KPower", DbType="Int")]
+		public System.Nullable<int> Is30KPower
+		{
+			get
+			{
+				return this._Is30KPower;
+			}
+			set
+			{
+				if ((this._Is30KPower != value))
+				{
+					this.OnIs30KPowerChanging(value);
+					this.SendPropertyChanging();
+					this._Is30KPower = value;
+					this.SendPropertyChanged("Is30KPower");
+					this.OnIs30KPowerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnterpriseEnvironmentDept", DbType="NVarChar(50)")]
+		public string EnterpriseEnvironmentDept
+		{
+			get
+			{
+				return this._EnterpriseEnvironmentDept;
+			}
+			set
+			{
+				if ((this._EnterpriseEnvironmentDept != value))
+				{
+					this.OnEnterpriseEnvironmentDeptChanging(value);
+					this.SendPropertyChanging();
+					this._EnterpriseEnvironmentDept = value;
+					this.SendPropertyChanged("EnterpriseEnvironmentDept");
+					this.OnEnterpriseEnvironmentDeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnvironmentPrincipal", DbType="NVarChar(30)")]
+		public string EnvironmentPrincipal
+		{
+			get
+			{
+				return this._EnvironmentPrincipal;
+			}
+			set
+			{
+				if ((this._EnvironmentPrincipal != value))
+				{
+					this.OnEnvironmentPrincipalChanging(value);
+					this.SendPropertyChanging();
+					this._EnvironmentPrincipal = value;
+					this.SendPropertyChanged("EnvironmentPrincipal");
+					this.OnEnvironmentPrincipalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnvironmentPersonCount", DbType="Int")]
+		public System.Nullable<int> EnvironmentPersonCount
+		{
+			get
+			{
+				return this._EnvironmentPersonCount;
+			}
+			set
+			{
+				if ((this._EnvironmentPersonCount != value))
+				{
+					this.OnEnvironmentPersonCountChanging(value);
+					this.SendPropertyChanging();
+					this._EnvironmentPersonCount = value;
+					this.SendPropertyChanged("EnvironmentPersonCount");
+					this.OnEnvironmentPersonCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MailingAddress", DbType="NVarChar(100)")]
+		public string MailingAddress
+		{
+			get
+			{
+				return this._MailingAddress;
+			}
+			set
+			{
+				if ((this._MailingAddress != value))
+				{
+					this.OnMailingAddressChanging(value);
+					this.SendPropertyChanging();
+					this._MailingAddress = value;
+					this.SendPropertyChanged("MailingAddress");
+					this.OnMailingAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficePhone", DbType="NVarChar(50)")]
+		public string OfficePhone
+		{
+			get
+			{
+				return this._OfficePhone;
+			}
+			set
+			{
+				if ((this._OfficePhone != value))
+				{
+					this.OnOfficePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._OfficePhone = value;
+					this.SendPropertyChanged("OfficePhone");
+					this.OnOfficePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="NVarChar(50)")]
+		public string MobilePhone
+		{
+			get
+			{
+				return this._MobilePhone;
+			}
+			set
+			{
+				if ((this._MobilePhone != value))
+				{
+					this.OnMobilePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._MobilePhone = value;
+					this.SendPropertyChanged("MobilePhone");
+					this.OnMobilePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bank", DbType="NVarChar(50)")]
+		public string Bank
+		{
+			get
+			{
+				return this._Bank;
+			}
+			set
+			{
+				if ((this._Bank != value))
+				{
+					this.OnBankChanging(value);
+					this.SendPropertyChanging();
+					this._Bank = value;
+					this.SendPropertyChanged("Bank");
+					this.OnBankChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankAccount", DbType="NVarChar(50)")]
+		public string BankAccount
+		{
+			get
+			{
+				return this._BankAccount;
+			}
+			set
+			{
+				if ((this._BankAccount != value))
+				{
+					this.OnBankAccountChanging(value);
+					this.SendPropertyChanging();
+					this._BankAccount = value;
+					this.SendPropertyChanged("BankAccount");
+					this.OnBankAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="NVarChar(50)")]
+		public string Fax
+		{
+			get
+			{
+				return this._Fax;
+			}
+			set
+			{
+				if ((this._Fax != value))
+				{
+					this.OnFaxChanging(value);
+					this.SendPropertyChanging();
+					this._Fax = value;
+					this.SendPropertyChanged("Fax");
+					this.OnFaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConnectPerson", DbType="NVarChar(30)")]
+		public string ConnectPerson
+		{
+			get
+			{
+				return this._ConnectPerson;
+			}
+			set
+			{
+				if ((this._ConnectPerson != value))
+				{
+					this.OnConnectPersonChanging(value);
+					this.SendPropertyChanging();
+					this._ConnectPerson = value;
+					this.SendPropertyChanged("ConnectPerson");
+					this.OnConnectPersonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zipcode", DbType="NVarChar(50)")]
+		public string Zipcode
+		{
+			get
+			{
+				return this._Zipcode;
+			}
+			set
+			{
+				if ((this._Zipcode != value))
+				{
+					this.OnZipcodeChanging(value);
+					this.SendPropertyChanging();
+					this._Zipcode = value;
+					this.SendPropertyChanged("Zipcode");
+					this.OnZipcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Website", DbType="NVarChar(150)")]
+		public string Website
+		{
+			get
+			{
+				return this._Website;
+			}
+			set
+			{
+				if ((this._Website != value))
+				{
+					this.OnWebsiteChanging(value);
+					this.SendPropertyChanging();
+					this._Website = value;
+					this.SendPropertyChanged("Website");
+					this.OnWebsiteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OnlineStatus", DbType="Int")]
+		public System.Nullable<int> OnlineStatus
+		{
+			get
+			{
+				return this._OnlineStatus;
+			}
+			set
+			{
+				if ((this._OnlineStatus != value))
+				{
+					this.OnOnlineStatusChanging(value);
+					this.SendPropertyChanging();
+					this._OnlineStatus = value;
+					this.SendPropertyChanged("OnlineStatus");
+					this.OnOnlineStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperationStatus", DbType="Int")]
+		public System.Nullable<int> OperationStatus
+		{
+			get
+			{
+				return this._OperationStatus;
+			}
+			set
+			{
+				if ((this._OperationStatus != value))
+				{
+					this.OnOperationStatusChanging(value);
+					this.SendPropertyChanging();
+					this._OperationStatus = value;
+					this.SendPropertyChanged("OperationStatus");
+					this.OnOperationStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartStatus", DbType="Int")]
+		public System.Nullable<int> StartStatus
+		{
+			get
+			{
+				return this._StartStatus;
+			}
+			set
+			{
+				if ((this._StartStatus != value))
+				{
+					this.OnStartStatusChanging(value);
+					this.SendPropertyChanging();
+					this._StartStatus = value;
+					this.SendPropertyChanged("StartStatus");
+					this.OnStartStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(150)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
 				}
 			}
 		}
@@ -826,6 +1630,332 @@ namespace WRYJC.DAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PollutionPoint")]
+	public partial class PollutionPoint : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _EnterpriseId;
+		
+		private System.Nullable<int> _Type;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _RegionCode;
+		
+		private System.Nullable<int> _Watershed;
+		
+		private System.Nullable<int> _EmissionDestination;
+		
+		private System.Nullable<int> _EmissionRules;
+		
+		private System.Nullable<int> _SignInstallForm;
+		
+		private System.Nullable<decimal> _FunctionType;
+		
+		private System.Nullable<decimal> _Latitude;
+		
+		private System.Nullable<int> _Status;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnEnterpriseIdChanging(System.Nullable<int> value);
+    partial void OnEnterpriseIdChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnRegionCodeChanging(System.Nullable<int> value);
+    partial void OnRegionCodeChanged();
+    partial void OnWatershedChanging(System.Nullable<int> value);
+    partial void OnWatershedChanged();
+    partial void OnEmissionDestinationChanging(System.Nullable<int> value);
+    partial void OnEmissionDestinationChanged();
+    partial void OnEmissionRulesChanging(System.Nullable<int> value);
+    partial void OnEmissionRulesChanged();
+    partial void OnSignInstallFormChanging(System.Nullable<int> value);
+    partial void OnSignInstallFormChanged();
+    partial void OnFunctionTypeChanging(System.Nullable<decimal> value);
+    partial void OnFunctionTypeChanged();
+    partial void OnLatitudeChanging(System.Nullable<decimal> value);
+    partial void OnLatitudeChanged();
+    partial void OnStatusChanging(System.Nullable<int> value);
+    partial void OnStatusChanged();
+    #endregion
+		
+		public PollutionPoint()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnterpriseId", DbType="Int")]
+		public System.Nullable<int> EnterpriseId
+		{
+			get
+			{
+				return this._EnterpriseId;
+			}
+			set
+			{
+				if ((this._EnterpriseId != value))
+				{
+					this.OnEnterpriseIdChanging(value);
+					this.SendPropertyChanging();
+					this._EnterpriseId = value;
+					this.SendPropertyChanged("EnterpriseId");
+					this.OnEnterpriseIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="Int")]
+		public System.Nullable<int> RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Watershed", DbType="Int")]
+		public System.Nullable<int> Watershed
+		{
+			get
+			{
+				return this._Watershed;
+			}
+			set
+			{
+				if ((this._Watershed != value))
+				{
+					this.OnWatershedChanging(value);
+					this.SendPropertyChanging();
+					this._Watershed = value;
+					this.SendPropertyChanged("Watershed");
+					this.OnWatershedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmissionDestination", DbType="Int")]
+		public System.Nullable<int> EmissionDestination
+		{
+			get
+			{
+				return this._EmissionDestination;
+			}
+			set
+			{
+				if ((this._EmissionDestination != value))
+				{
+					this.OnEmissionDestinationChanging(value);
+					this.SendPropertyChanging();
+					this._EmissionDestination = value;
+					this.SendPropertyChanged("EmissionDestination");
+					this.OnEmissionDestinationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmissionRules", DbType="Int")]
+		public System.Nullable<int> EmissionRules
+		{
+			get
+			{
+				return this._EmissionRules;
+			}
+			set
+			{
+				if ((this._EmissionRules != value))
+				{
+					this.OnEmissionRulesChanging(value);
+					this.SendPropertyChanging();
+					this._EmissionRules = value;
+					this.SendPropertyChanged("EmissionRules");
+					this.OnEmissionRulesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignInstallForm", DbType="Int")]
+		public System.Nullable<int> SignInstallForm
+		{
+			get
+			{
+				return this._SignInstallForm;
+			}
+			set
+			{
+				if ((this._SignInstallForm != value))
+				{
+					this.OnSignInstallFormChanging(value);
+					this.SendPropertyChanging();
+					this._SignInstallForm = value;
+					this.SendPropertyChanged("SignInstallForm");
+					this.OnSignInstallFormChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FunctionType", DbType="Decimal(10,7)")]
+		public System.Nullable<decimal> FunctionType
+		{
+			get
+			{
+				return this._FunctionType;
+			}
+			set
+			{
+				if ((this._FunctionType != value))
+				{
+					this.OnFunctionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._FunctionType = value;
+					this.SendPropertyChanged("FunctionType");
+					this.OnFunctionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Latitude", DbType="Decimal(10,7)")]
+		public System.Nullable<decimal> Latitude
+		{
+			get
+			{
+				return this._Latitude;
+			}
+			set
+			{
+				if ((this._Latitude != value))
+				{
+					this.OnLatitudeChanging(value);
+					this.SendPropertyChanging();
+					this._Latitude = value;
+					this.SendPropertyChanged("Latitude");
+					this.OnLatitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
+		public System.Nullable<int> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysMenu")]
 	public partial class SysMenu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1197,7 +2327,7 @@ namespace WRYJC.DAL
 		
 		private string _Remark;
 		
-		private EntityRef<SysRoleAndSysPower> _SysRoleAndSysPower;
+		private EntitySet<SysRoleAndSysPower> _SysRoleAndSysPower;
 		
 		private EntityRef<SysMenu> _SysMenu;
 		
@@ -1223,7 +2353,7 @@ namespace WRYJC.DAL
 		
 		public SysPower()
 		{
-			this._SysRoleAndSysPower = default(EntityRef<SysRoleAndSysPower>);
+			this._SysRoleAndSysPower = new EntitySet<SysRoleAndSysPower>(new Action<SysRoleAndSysPower>(this.attach_SysRoleAndSysPower), new Action<SysRoleAndSysPower>(this.detach_SysRoleAndSysPower));
 			this._SysMenu = default(EntityRef<SysMenu>);
 			OnCreated();
 		}
@@ -1292,7 +2422,7 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PowerName", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PowerName", DbType="NVarChar(50)")]
 		public string PowerName
 		{
 			get
@@ -1312,7 +2442,7 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PowerUrl", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PowerUrl", DbType="NVarChar(50)")]
 		public string PowerUrl
 		{
 			get
@@ -1372,32 +2502,16 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysPower_SysRoleAndSysPower", Storage="_SysRoleAndSysPower", ThisKey="Id", OtherKey="Id", IsUnique=true, IsForeignKey=false)]
-		public SysRoleAndSysPower SysRoleAndSysPower
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysPower_SysRoleAndSysPower", Storage="_SysRoleAndSysPower", ThisKey="Id", OtherKey="SysPowerId")]
+		public EntitySet<SysRoleAndSysPower> SysRoleAndSysPower
 		{
 			get
 			{
-				return this._SysRoleAndSysPower.Entity;
+				return this._SysRoleAndSysPower;
 			}
 			set
 			{
-				SysRoleAndSysPower previousValue = this._SysRoleAndSysPower.Entity;
-				if (((previousValue != value) 
-							|| (this._SysRoleAndSysPower.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SysRoleAndSysPower.Entity = null;
-						previousValue.SysPower = null;
-					}
-					this._SysRoleAndSysPower.Entity = value;
-					if ((value != null))
-					{
-						value.SysPower = this;
-					}
-					this.SendPropertyChanged("SysRoleAndSysPower");
-				}
+				this._SysRoleAndSysPower.Assign(value);
 			}
 		}
 		
@@ -1453,6 +2567,18 @@ namespace WRYJC.DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_SysRoleAndSysPower(SysRoleAndSysPower entity)
+		{
+			this.SendPropertyChanging();
+			entity.SysPower = this;
+		}
+		
+		private void detach_SysRoleAndSysPower(SysRoleAndSysPower entity)
+		{
+			this.SendPropertyChanging();
+			entity.SysPower = null;
 		}
 	}
 	
@@ -1571,7 +2697,7 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EditTime", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EditTime", DbType="DateTime")]
 		public System.Nullable<System.DateTime> EditTime
 		{
 			get
@@ -1591,7 +2717,7 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelTime", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelTime", DbType="DateTime")]
 		public System.Nullable<System.DateTime> DelTime
 		{
 			get
@@ -1611,7 +2737,7 @@ namespace WRYJC.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertTime", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InsertTime", DbType="DateTime")]
 		public System.Nullable<System.DateTime> InsertTime
 		{
 			get
@@ -1739,198 +2865,6 @@ namespace WRYJC.DAL
 		{
 			this.SendPropertyChanging();
 			entity.SysRole = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysUserAndSysRole")]
-	public partial class SysUserAndSysRole : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _SysUserId;
-		
-		private int _SysRoleId;
-		
-		private EntityRef<SysRole> _SysRole;
-		
-		private EntityRef<SysUser> _SysUser;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnSysUserIdChanging(int value);
-    partial void OnSysUserIdChanged();
-    partial void OnSysRoleIdChanging(int value);
-    partial void OnSysRoleIdChanged();
-    #endregion
-		
-		public SysUserAndSysRole()
-		{
-			this._SysRole = default(EntityRef<SysRole>);
-			this._SysUser = default(EntityRef<SysUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysUserId", DbType="Int NOT NULL")]
-		public int SysUserId
-		{
-			get
-			{
-				return this._SysUserId;
-			}
-			set
-			{
-				if ((this._SysUserId != value))
-				{
-					if (this._SysUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSysUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._SysUserId = value;
-					this.SendPropertyChanged("SysUserId");
-					this.OnSysUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysRoleId", DbType="Int NOT NULL")]
-		public int SysRoleId
-		{
-			get
-			{
-				return this._SysRoleId;
-			}
-			set
-			{
-				if ((this._SysRoleId != value))
-				{
-					if (this._SysRole.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSysRoleIdChanging(value);
-					this.SendPropertyChanging();
-					this._SysRoleId = value;
-					this.SendPropertyChanged("SysRoleId");
-					this.OnSysRoleIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysRole_SysUserAndSysRole", Storage="_SysRole", ThisKey="SysRoleId", OtherKey="Id", IsForeignKey=true)]
-		public SysRole SysRole
-		{
-			get
-			{
-				return this._SysRole.Entity;
-			}
-			set
-			{
-				SysRole previousValue = this._SysRole.Entity;
-				if (((previousValue != value) 
-							|| (this._SysRole.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SysRole.Entity = null;
-						previousValue.SysUserAndSysRole.Remove(this);
-					}
-					this._SysRole.Entity = value;
-					if ((value != null))
-					{
-						value.SysUserAndSysRole.Add(this);
-						this._SysRoleId = value.Id;
-					}
-					else
-					{
-						this._SysRoleId = default(int);
-					}
-					this.SendPropertyChanged("SysRole");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysUser_SysUserAndSysRole", Storage="_SysUser", ThisKey="SysUserId", OtherKey="Id", IsForeignKey=true)]
-		public SysUser SysUser
-		{
-			get
-			{
-				return this._SysUser.Entity;
-			}
-			set
-			{
-				SysUser previousValue = this._SysUser.Entity;
-				if (((previousValue != value) 
-							|| (this._SysUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SysUser.Entity = null;
-						previousValue.SysUserAndSysRole.Remove(this);
-					}
-					this._SysUser.Entity = value;
-					if ((value != null))
-					{
-						value.SysUserAndSysRole.Add(this);
-						this._SysUserId = value.Id;
-					}
-					else
-					{
-						this._SysUserId = default(int);
-					}
-					this.SendPropertyChanged("SysUser");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2429,6 +3363,390 @@ namespace WRYJC.DAL
 		{
 			this.SendPropertyChanging();
 			entity.SysUser = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysRoleAndSysPower")]
+	public partial class SysRoleAndSysPower : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _SysRoleId;
+		
+		private int _SysPowerId;
+		
+		private EntityRef<SysPower> _SysPower;
+		
+		private EntityRef<SysRole> _SysRole;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSysRoleIdChanging(int value);
+    partial void OnSysRoleIdChanged();
+    partial void OnSysPowerIdChanging(int value);
+    partial void OnSysPowerIdChanged();
+    #endregion
+		
+		public SysRoleAndSysPower()
+		{
+			this._SysPower = default(EntityRef<SysPower>);
+			this._SysRole = default(EntityRef<SysRole>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysRoleId", DbType="Int NOT NULL")]
+		public int SysRoleId
+		{
+			get
+			{
+				return this._SysRoleId;
+			}
+			set
+			{
+				if ((this._SysRoleId != value))
+				{
+					if (this._SysRole.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSysRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._SysRoleId = value;
+					this.SendPropertyChanged("SysRoleId");
+					this.OnSysRoleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysPowerId", DbType="Int NOT NULL")]
+		public int SysPowerId
+		{
+			get
+			{
+				return this._SysPowerId;
+			}
+			set
+			{
+				if ((this._SysPowerId != value))
+				{
+					if (this._SysPower.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSysPowerIdChanging(value);
+					this.SendPropertyChanging();
+					this._SysPowerId = value;
+					this.SendPropertyChanged("SysPowerId");
+					this.OnSysPowerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysPower_SysRoleAndSysPower", Storage="_SysPower", ThisKey="SysPowerId", OtherKey="Id", IsForeignKey=true)]
+		public SysPower SysPower
+		{
+			get
+			{
+				return this._SysPower.Entity;
+			}
+			set
+			{
+				SysPower previousValue = this._SysPower.Entity;
+				if (((previousValue != value) 
+							|| (this._SysPower.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SysPower.Entity = null;
+						previousValue.SysRoleAndSysPower.Remove(this);
+					}
+					this._SysPower.Entity = value;
+					if ((value != null))
+					{
+						value.SysRoleAndSysPower.Add(this);
+						this._SysPowerId = value.Id;
+					}
+					else
+					{
+						this._SysPowerId = default(int);
+					}
+					this.SendPropertyChanged("SysPower");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysRole_SysRoleAndSysPower", Storage="_SysRole", ThisKey="SysRoleId", OtherKey="Id", IsForeignKey=true)]
+		public SysRole SysRole
+		{
+			get
+			{
+				return this._SysRole.Entity;
+			}
+			set
+			{
+				SysRole previousValue = this._SysRole.Entity;
+				if (((previousValue != value) 
+							|| (this._SysRole.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SysRole.Entity = null;
+						previousValue.SysRoleAndSysPower.Remove(this);
+					}
+					this._SysRole.Entity = value;
+					if ((value != null))
+					{
+						value.SysRoleAndSysPower.Add(this);
+						this._SysRoleId = value.Id;
+					}
+					else
+					{
+						this._SysRoleId = default(int);
+					}
+					this.SendPropertyChanged("SysRole");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysUserAndSysRole")]
+	public partial class SysUserAndSysRole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _SysUserId;
+		
+		private int _SysRoleId;
+		
+		private EntityRef<SysRole> _SysRole;
+		
+		private EntityRef<SysUser> _SysUser;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSysUserIdChanging(int value);
+    partial void OnSysUserIdChanged();
+    partial void OnSysRoleIdChanging(int value);
+    partial void OnSysRoleIdChanged();
+    #endregion
+		
+		public SysUserAndSysRole()
+		{
+			this._SysRole = default(EntityRef<SysRole>);
+			this._SysUser = default(EntityRef<SysUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysUserId", DbType="Int NOT NULL")]
+		public int SysUserId
+		{
+			get
+			{
+				return this._SysUserId;
+			}
+			set
+			{
+				if ((this._SysUserId != value))
+				{
+					if (this._SysUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSysUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._SysUserId = value;
+					this.SendPropertyChanged("SysUserId");
+					this.OnSysUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SysRoleId", DbType="Int NOT NULL")]
+		public int SysRoleId
+		{
+			get
+			{
+				return this._SysRoleId;
+			}
+			set
+			{
+				if ((this._SysRoleId != value))
+				{
+					if (this._SysRole.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSysRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._SysRoleId = value;
+					this.SendPropertyChanged("SysRoleId");
+					this.OnSysRoleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysRole_SysUserAndSysRole", Storage="_SysRole", ThisKey="SysRoleId", OtherKey="Id", IsForeignKey=true)]
+		public SysRole SysRole
+		{
+			get
+			{
+				return this._SysRole.Entity;
+			}
+			set
+			{
+				SysRole previousValue = this._SysRole.Entity;
+				if (((previousValue != value) 
+							|| (this._SysRole.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SysRole.Entity = null;
+						previousValue.SysUserAndSysRole.Remove(this);
+					}
+					this._SysRole.Entity = value;
+					if ((value != null))
+					{
+						value.SysUserAndSysRole.Add(this);
+						this._SysRoleId = value.Id;
+					}
+					else
+					{
+						this._SysRoleId = default(int);
+					}
+					this.SendPropertyChanged("SysRole");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SysUser_SysUserAndSysRole", Storage="_SysUser", ThisKey="SysUserId", OtherKey="Id", IsForeignKey=true)]
+		public SysUser SysUser
+		{
+			get
+			{
+				return this._SysUser.Entity;
+			}
+			set
+			{
+				SysUser previousValue = this._SysUser.Entity;
+				if (((previousValue != value) 
+							|| (this._SysUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SysUser.Entity = null;
+						previousValue.SysUserAndSysRole.Remove(this);
+					}
+					this._SysUser.Entity = value;
+					if ((value != null))
+					{
+						value.SysUserAndSysRole.Add(this);
+						this._SysUserId = value.Id;
+					}
+					else
+					{
+						this._SysUserId = default(int);
+					}
+					this.SendPropertyChanged("SysUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

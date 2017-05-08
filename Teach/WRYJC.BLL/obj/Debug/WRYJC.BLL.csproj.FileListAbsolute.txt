@@ -7,3 +7,12 @@ D:\USUAL\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.pdb
 D:\USUAL\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.dll
 D:\USUAL\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.BLL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.BLL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.csprojResolveAssemblyReference.cache
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.pdb
