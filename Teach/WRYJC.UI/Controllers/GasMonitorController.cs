@@ -8,17 +8,28 @@ using WRYJC.UI.Controllers.Base;
 using WRYJC.BLL;
 using WRYJC.DAL;
 using WRYJC.Domain;
+using WRYJC.UI.Models;
 
 namespace WRYJC.UI.Controllers
 {
+    /*
+    * author：戴清
+    * 2017-05-09 16:39:38
+    * 废气污染源监控部分controller
+    */
     public class GasMonitorController : LoginController
     {
+        IEnterpriseBLL enterpriseBll = new EnterpriseBLLImpl();
         //
         // GET: /GasMonitor/
-
         public ActionResult Index()
         {
-            return View();
+            List<Enterprise> list = enterpriseBll.GetAllEnterprises().list;
+            GasMonitorView viewModel = new GasMonitorView()
+            {
+                listEnterprises = list
+            };
+            return View(viewModel);
         }
         public ActionResult getGasDayData(FormCollection form)
         {

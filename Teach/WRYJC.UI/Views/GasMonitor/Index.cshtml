@@ -1,4 +1,4 @@
-﻿@*@model*@ 
+﻿@model WRYJC.UI.Models.GasMonitorView
 @{
     ViewBag.Title = "废气监测报表";
     ViewData["dataSelector"] = ".js-table";
@@ -62,11 +62,12 @@
                                                 <select name="PollutantPoint" data-placeholder="业务状态..." class="chosen-select-width col-sm-11">
                                                     <option value="">请选择污染源</option>
                                                     @{
-                                                        
+                                                        foreach(WRYJC.DAL.Enterprise e in @Model.listEnterprises)
+                                                        {
+                                                            <option value=e.ID>e.Name</option>
+                                                        }
                                                     }
-                                                    <option value="0">污染点1</option>
-                                                    <option value="1">污染点2</option>
-                                                    <option value="2">污染点3</option>
+                                                    @*<option value="0">污染点1</option>*@
                                                 </select>
                                             </div>
                                             @*<div class="col-sm-6">
@@ -224,9 +225,6 @@
                                 </thead>
                                 <tbody class="js-body">
                                     <tr class="sysuser-element js-template">
-                                        @*<td class="js-item" name="ID">
-                                            </td>*@
-                                        @*<td class="js-item client-avatar" name="HeadIcon" formatter="setUserIcon">${HeadIcon}</td>*@
                                         <td class="js-item" name="WasteObjectID">${WasteObjectID}</td>
                                         <td class="js-item" name="PCode">${PCode}</td>
                                         <td class="js-item" name="ReceTime">${ReceTime}</td>

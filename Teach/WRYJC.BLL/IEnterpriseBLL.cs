@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WRYJC.Domain;
+using WRYJC.DAL;
 
-namespace WRYJC.DAL
-{
+namespace WRYJC.BLL
+{    
     /*
      * author：戴清
-     * 2017-05-09 16:32:22
-     * 有关企业信息的数据库操作接口定义
+     * 有关系统用户的数据库操作内容
+     * 企业对于BLL接口定义
      */
-    public interface IEnterpriseDAL
+    public interface IEnterpriseBLL
     {
         Response<Enterprise> GetAllEnterprises();
     }

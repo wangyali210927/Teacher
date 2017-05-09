@@ -59,5 +59,15 @@ namespace DALTest
             Assert.AreEqual(2, result.list[0].Id);
             Assert.AreEqual(1, result.list[0].RoleName);
         }
+        /// <summary>
+        /// 测试DAL层是否返回企业
+        /// </summary>
+        [TestMethod]
+        public void TestEnterprise()
+        {
+            IEnterpriseDAL target = new EnterpriseDALImpl();
+            Response<Enterprise> result = target.GetAllEnterprises();
+            Assert.AreEqual(1, result.list[0].Id);
+        }
     }
 }

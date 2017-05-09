@@ -39,12 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnterpriseBLLImpl.cs" />
     <Compile Include="Gas\GasDayDataBLLImpl.cs" />
     <Compile Include="Gas\GasHourDataBLLImpl.cs" />
     <Compile Include="Gas\GasRTDataBLL.cs" />
     <Compile Include="Gas\IGasRTDataBLL.cs" />
     <Compile Include="Gas\IGasDayDataBLL.cs" />
     <Compile Include="Gas\IGasHourDataBLL.cs" />
+    <Compile Include="IEnterpriseBLL.cs" />
     <Compile Include="ISysFileBLL.cs" />
     <Compile Include="ISysMenuBLL.cs" />
     <Compile Include="ISysUserBLL.cs" />
