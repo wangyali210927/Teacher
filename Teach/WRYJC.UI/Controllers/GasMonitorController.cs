@@ -8,6 +8,7 @@ using WRYJC.UI.Controllers.Base;
 using WRYJC.BLL;
 using WRYJC.DAL;
 using WRYJC.Domain;
+using WRYJC.UI.Models;
 
 namespace WRYJC.UI.Controllers
 {
@@ -21,10 +22,14 @@ namespace WRYJC.UI.Controllers
         IEnterpriseBLL enterpriseBll = new EnterpriseBLLImpl();
         //
         // GET: /GasMonitor/
-
         public ActionResult Index()
         {
-            return View();
+            List<Enterprise> list = enterpriseBll.GetAllEnterprises().list;
+            GasMonitorView viewModel = new GasMonitorView()
+            {
+                listEnterprises = list
+            };
+            return View(viewModel);
         }
         public ActionResult getGasDayData(FormCollection form)
         {

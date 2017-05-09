@@ -49,5 +49,12 @@ namespace BLLTest
             Assert.IsNotNull(result.list, "get menu error");
             Assert.AreEqual(33, result.list.Count);
         }
+        [TestMethod]
+        public void TestEnterprise()
+        {
+            IEnterpriseBLL target = new EnterpriseBLLImpl();
+            Response<Enterprise> result = target.GetAllEnterprises();
+            Assert.AreEqual(1, result.list[0].Id);
+        }
     }
 }
