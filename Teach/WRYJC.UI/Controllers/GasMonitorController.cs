@@ -11,8 +11,14 @@ using WRYJC.Domain;
 
 namespace WRYJC.UI.Controllers
 {
+    /*
+    * author：戴清
+    * 2017-05-09 16:39:38
+    * 废气污染源监控部分controller
+    */
     public class GasMonitorController : LoginController
     {
+        IEnterpriseBLL enterpriseBll = new EnterpriseBLLImpl();
         //
         // GET: /GasMonitor/
 

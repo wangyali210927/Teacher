@@ -48,6 +48,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataWRYJC.dbml</DependentUpon>
     </Compile>
+    <Compile Include="EnterpriseDALImpl.cs" />
     <Compile Include="GasData\GasDayDataDALImpl.cs" />
     <Compile Include="GasData\IGasDayDataDAL.cs" />
     <Compile Include="IEnterpriseDAL.cs" />
