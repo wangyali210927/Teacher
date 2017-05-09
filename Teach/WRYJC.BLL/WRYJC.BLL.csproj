@@ -47,9 +47,11 @@
     <Compile Include="Gas\IGasDayDataBLL.cs" />
     <Compile Include="Gas\IGasHourDataBLL.cs" />
     <Compile Include="IEnterpriseBLL.cs" />
+    <Compile Include="IPollutionPointBLL.cs" />
     <Compile Include="ISysFileBLL.cs" />
     <Compile Include="ISysMenuBLL.cs" />
     <Compile Include="ISysUserBLL.cs" />
+    <Compile Include="PollutionPointBLLImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysMenuBLLImpl.cs" />
     <Compile Include="SysUserBLLImpl.cs" />

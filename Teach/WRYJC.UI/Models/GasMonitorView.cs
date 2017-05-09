@@ -15,5 +15,6 @@ namespace WRYJC.UI.Models
     public class GasMonitorView
     {
         public List<Enterprise> listEnterprises { get; set; }
+        public List<PollutionPoint> listPollutionPoints { get;set; }
     }
 }
