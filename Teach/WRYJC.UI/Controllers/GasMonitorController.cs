@@ -9,6 +9,7 @@ using WRYJC.BLL;
 using WRYJC.DAL;
 using WRYJC.Domain;
 using WRYJC.UI.Models;
+using System.Diagnostics;
 
 namespace WRYJC.UI.Controllers
 {
@@ -20,6 +21,7 @@ namespace WRYJC.UI.Controllers
     public class GasMonitorController : LoginController
     {
         IEnterpriseBLL enterpriseBll = new EnterpriseBLLImpl();
+        IPollutionPointBLL pollitionPointBLL = new PollutionPointBLLImpl();
         //
         // GET: /GasMonitor/
         public ActionResult Index()
@@ -29,6 +31,18 @@ namespace WRYJC.UI.Controllers
             {
                 listEnterprises = list
             };
+            return View(viewModel);
+            //return Content(true, viewModel, ResultType.Json);
+        }
+        public ActionResult getPollutionPoints(FormCollection form,string Id)
+        {
+            List<Enterprise> list = enterpriseBll.GetAllEnterprises().list;
+            List<PollutionPoint> listPollutionPoints = pollitionPointBLL.GetAllPollutionPoints().list;
+            GasMonitorView viewModel = new GasMonitorView()
+            {
+                listEnterprises = list,
+                listPollutionPoints = listPollutionPoints
+            }; 
             return View(viewModel);
         }
         public ActionResult getGasDayData(FormCollection form)

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using WRYJC.UI.Controllers.Base;
 using WRYJC.UI.Controllers;
 using System.Web.Mvc;
 using System.Web;
 using WRYJC.DAL;
 using WRYJC.BLL;
+using WRYJC.UI.Models;
 
 namespace WRYJC.UI.Tests
 {
@@ -42,5 +44,12 @@ namespace WRYJC.UI.Tests
         //    List<SysMenu> menuList = HttpContext.Current.Session["currentMenu"] as List<SysMenu>;
         //    Assert.AreEqual(33, menuList.Count);
         //}
+
+        //need to learn
+        [TestMethod]
+        public void TestGasMonitorModel()
+        {
+            GasMonitorController target = new GasMonitorController();
+        }
     }
 }
