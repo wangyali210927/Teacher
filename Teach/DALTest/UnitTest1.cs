@@ -69,5 +69,13 @@ namespace DALTest
             Response<Enterprise> result = target.GetAllEnterprises();
             Assert.AreEqual(1, result.list[0].Id);
         }
+
+        [TestMethod]
+        public void TestGetPollutionPointByEnterprise()
+        {
+            IPollutionPointDAL target = new PollutionPointDALImpl();
+            Response<PollutionPoint> result = target.GetPollutionPointByEnterpriseId(1);
+            Assert.AreEqual("废气污染点一号", result.list[0].Name);
+        }
     }
 }

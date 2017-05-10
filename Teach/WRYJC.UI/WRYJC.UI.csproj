@@ -133,6 +133,7 @@
     <Compile Include="Controllers\GasMonitorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PollutionController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,8 +146,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Common.css" />
     <Content Include="Content\fonts\fontawesome-webfont93e3.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\framework-ui.css" />
     <Content Include="Content\img\home-bg.png" />
     <Content Include="Content\patterns\header-profile-skin-1.png" />
     <Content Include="Content\patterns\header-profile-skin-3.png" />
@@ -155,6 +158,7 @@
     <Content Include="Scripts\contabs.min.js" />
     <Content Include="Scripts\hplus.min.js" />
     <Content Include="Scripts\jquery.cityselect.js" />
+    <Content Include="Scripts\jquery.layout.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -430,6 +434,41 @@
     <Content Include="Scripts\plugins\validate\messages_zh.min.js" />
     <Content Include="Scripts\plugins\webuploader\index.html" />
     <Content Include="Scripts\plugins\webuploader\webuploader.min.js" />
+    <Content Include="Scripts\pollution.js" />
+    <Content Include="Scripts\ztree\css\awesomeStyle\awesome.css" />
+    <Content Include="Scripts\ztree\css\awesomeStyle\img\loading.gif" />
+    <Content Include="Scripts\ztree\css\demo.css" />
+    <Content Include="Scripts\ztree\css\metroStyle\img\line_conn.png" />
+    <Content Include="Scripts\ztree\css\metroStyle\img\loading.gif" />
+    <Content Include="Scripts\ztree\css\metroStyle\img\metro.gif" />
+    <Content Include="Scripts\ztree\css\metroStyle\img\metro.png" />
+    <Content Include="Scripts\ztree\css\metroStyle\metroStyle.css" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\2.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\3.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\4.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\5.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\6.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\7.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\8.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\diy\9.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\loading.gif" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Scripts\ztree\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Scripts\ztree\js\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.all.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.all.min.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.core.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.core.min.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.excheck.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.excheck.min.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.exedit.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.exedit.min.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.exhide.js" />
+    <Content Include="Scripts\ztree\js\jquery.ztree.exhide.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -447,6 +486,10 @@
     <Content Include="Views\Manage\Dashboard.cshtml" />
     <Content Include="Views\GasMonitor\Index.cshtml" />
     <Content Include="Views\GasMonitor\getPollutionPoints.cshtml" />
+    <Content Include="Views\Pollution\MonitorPoint.cshtml" />
+    <Content Include="Scripts\ztree\css\awesomeStyle\awesome.less" />
+    <Content Include="Scripts\ztree\css\awesomeStyle\fa.less" />
+    <Content Include="Scripts\ztree\js\ztree.3.5.26.zip" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
