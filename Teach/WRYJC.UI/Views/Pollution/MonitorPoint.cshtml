@@ -1,0 +1,1628 @@
+﻿@{
+    ViewBag.Title = "污染点";
+    ViewData["dataSelector"] = ".js-lists";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+
+    var jsFiles = new List<string>();
+    jsFiles.Add("Scripts/common/dataHandler.js");
+    jsFiles.Add("Scripts/common/charts.js");
+    jsFiles.Add("Scripts/common/list.js");
+    jsFiles.Add("Scripts/plugins/slimscroll/jquery.slimscroll.min.js");
+    jsFiles.Add("Scripts/plugins/heighChart/highcharts.js");
+    jsFiles.Add("Scripts/init.js");
+    jsFiles.Add("Scripts/pollution.js");
+    jsFiles.Add("Scripts/plugins/metisMenu/jquery.metisMenu.js");
+    jsFiles.Add("Scripts/plugins/layer/layer.min.js");
+    jsFiles.Add("Scripts/hplus.min.js");
+    jsFiles.Add("Scripts/jquery.layout.js");
+    jsFiles.Add("Scripts/ztree/js/jquery.ztree.core.js");
+    ViewBag.JsModules = jsFiles;
+    var csFiles = new List<string>();
+    csFiles.Add("Content/Common.css");
+    csFiles.Add("Scripts/ztree/css/zTreeStyle/zTreeStyle.css");
+    csFiles.Add("Content/framework-ui.css");
+    ViewBag.cssModules = csFiles;
+}
+<script>
+    $(function () {
+        $('#layout').layout();
+    });
+</script>
+
+<!--超标处置单模态图-->
+<div class="modal" id="myPollutOverDealModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">污染物超标处置单</h4>
+            </div>
+            <div class="modal-body">
+                <form class="js-form">
+                    <div class="price-title">
+                        污染物报警处置单
+                    </div>
+                    <div class="price-info">
+                        <table class="form">
+                            <tr>
+                                <th class="formTitle">污染源名称</th>
+                                <td class="formValue" style="padding-right: 20px;" colspan="3">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">监控点名称</th>
+                                <td class="formValue" style="padding-right: 20px;" colspan="3">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">污染物名称</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">报警类别</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">国家标准值</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">执行标准值</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">报警开始时间</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">报警值</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">报警结束时间</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">解报值</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">进入处置时间</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">处置完毕时间</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center" colspan="4">报警处置</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />报告领导
+                                </th>
+                                <th class="formTitle">领导姓名</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知执法人员
+                                </th>
+                                <th class="formTitle">执法人员</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知运维单位
+                                </th>
+                                <th class="formTitle">执法人员单位</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知排污企业
+                                </th>
+                                <th class="formTitle">运维单位名称</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="4">
+                                    <input id="Checkbox1" type="checkbox" />自行处理
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="text-align:center" colspan="4">处置情况</th>
+                            </tr>
+                            <tr>
+                                <th colspan="4">
+                                    处置情况描述
+                                    <input id="Radio1" type="radio" name="rdeal" />处置中
+                                    <input id="Radio1" type="radio" name="rdeal" />处置完毕
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--数采仪掉线处置单模态图-->
+<div class="modal" id="myDataDropDealModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">数采仪掉线处置单</h4>
+            </div>
+            <div class="modal-body">
+                <form class="js-form">
+                    <div class="price-title">
+                        设施报警处置单
+                    </div>
+                    <div class="price-info">
+                        <table class="form">
+                            <tr>
+                                <th class="formTitle">污染源名称</th>
+                                <td class="formValue" style="padding-right: 20px;" colspan="3">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">设施名称</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">报警类别</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">报警时间</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">解报时间</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="formTitle">进入处置时间</th>
+                                <td class="formValue" style="padding-right: 20px;">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                                <th class="formTitle">处置完毕时间</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center" colspan="4">报警处置</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />报告领导
+                                </th>
+                                <th class="formTitle">领导姓名</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知执法人员
+                                </th>
+                                <th class="formTitle">执法人员</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知运维单位
+                                </th>
+                                <th class="formTitle">执法人员单位</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <input id="Checkbox1" type="checkbox" />通知排污企业
+                                </th>
+                                <th class="formTitle">运维单位名称</th>
+                                <td class="formValue">
+                                    <input type="text" class="form-control" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="4">
+                                    <input id="Checkbox1" type="checkbox" />自行处理
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="text-align:center" colspan="4">处置情况</th>
+                            </tr>
+                            <tr>
+                                <th colspan="4">
+                                    处置情况描述
+                                    <input id="Radio1" type="radio" name="rdeal" />处置中
+                                    <input id="Radio1" type="radio" name="rdeal" />处置完毕
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--数采仪报警详情模态图-->
+<div class="modal" id="myPollutOverInfoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">数采仪报警详情</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--报警记录列表模态图-->
+<div class="modal" id="myAlarmModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">报警记录列表</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--下方导航-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        @*<h1>@ViewData["title"]</h1>*@
+        <ol class="breadcrumb">
+            <li>
+                <a href="@(Url.Action("Dashboard", "Manage"))">主页</a>
+            </li>
+            <li>
+                <a href="@(Url.Action("RealtimeMonitor", "Pollution"))">污染源数据</a>
+            </li>
+            <li>
+                <strong>@ViewData["title"]</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="ui-layout" id="layout" style="height: 94%; width: 100%;">
+    @* 左侧内容 *@
+    <div class="ui-layout-west">
+        <div id="tab-contentdiv" class="tab-content" style="height: 97%;width:95%">
+            @* 上方搜索内容 *@
+            <form class="form-horizontal m-t js-search" id="commentForm" name="commentForm" novalidate="novalidate">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label class="col-md-5 col-lg-5 control-label">名称：</label>
+                        <div class="col-md-7 col-lg-7">
+                            <input name="Name" minlength="2" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label class="col-md-5 col-lg-5 control-label">环保联系人：</label>
+                        <div class="col-md-5 col-lg-5">
+                            <input name="Contact" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button class="btn btn-primary" type="submit">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            @* 搜索以下内容 *@
+            <div id="tab-1" class="tab-pane active" style="width: 100%; height: 68%;">
+                @* 树形结构内容 *@
+                <div class="js-lists full-height-scroll" style="height:80%;" url="@Url.Action("EnterpriseTree", "Pollution")">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
+                @* 下方脚注及翻页按钮 *@
+                <div class="row js-footer">
+                    <div class="row right">
+                        总共${total}条,共${rows}页，当前第${page}页
+                    </div>
+                    <br />
+                    <div class="ibox-tools ">
+                        @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* 中间内容 *@
+    <div class="ui-layout-center">
+        <input id="hcurrentid" type="hidden" />
+        <input id="hcurrentfun" type="hidden" />
+
+        @* 选择企业污染点 *@
+        <div class="ibox" style="height:96%" id="erealtime" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:95%;">
+                <div class="row">
+                    <input id="hrealtimeid" type="hidden" />
+                    <div class="form-group col-sm-12">
+                        <div class="col-md-4 col-lg-4 control-label" id="EName">请选择企业</div>
+                        <label class="col-md-2 col-lg-2 control-label">污染点：</label>
+                        <div class="col-md-6 col-lg-6" id="WasteObjectLists">
+                            @*@Html.DropDownList("WasteObjectLists", WasteObjectList, new { @placeholder = "性别...", @class = "chosen-select-width col-sm-11", @id = "WasteObjectLists" })*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="ibox float-e-margins" style="width: 97%;overflow-y:auto;">
+                            <div id="chartShow" class="row" style="width:90%">
+                                <div id="linechart0" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart1" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart2" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart3" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart4" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart5" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart6" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart7" class="js-chart line-container col-md-4 col-lg-4"></div>
+                                <div id="linechart8" class="js-chart line-container col-md-4 col-lg-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* 企业首页 *@
+        <div class="ibox" style="height:96%" id="eenterprise" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                @* 最上方企业名称内容 *@
+                <div class="row">
+                    <label class="col-md-2 col-lg-2 control-label">企业:</label>
+                    <div class="col-md-10 col-lg-10" id="EeName">请选择企业</div>
+                </div>
+                <div class="row">
+                    <label class="col-md-2 col-lg-2 control-label">关注</label>
+                    <div class="col-md-4 col-lg-4" id="EAttention"></div>
+                    <label class="col-md-2 col-lg-2 control-label">状态</label>
+                    <div class="col-md-4 col-lg-4" id="EState"></div>
+                </div>
+
+                <div class="ibox-content">
+                    @* 头部设置信息 *@
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="ehid" name="ehid" hidden="hidden" />
+                            <div class="form-group col-sm-3">
+                                @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="日数据", Value="1"},
+                            new SelectListItem(){Text="小时数据", Value="2"},new SelectListItem(){Text="十分钟数据", Value="3"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                            </div>
+                            <div class="input-daterange form-group col-sm-11">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-1">
+                                <button class="btn btn-primary" type="submit">查询</button>
+                            </div>
+                        </form>
+                    </div>
+                    @* 表格信息 *@
+                    <div class="row">
+                        <table class="js-table table table-hover" url="@Url.Action("getReportRate", "Pollution")">
+                            <thead>
+                                <tr>
+                                    <th>监控点</th>
+                                    <th>数采仪</th>
+                                    <th>应报记录数</th>
+                                    <th>实报记录数</th>
+                                    <th>上报率</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-body">
+                                <tr class="js-template">
+                                    <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                    <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @* 下方信息 *@
+                    <div class="row js-footer">
+                        总共${total}条,共${rows}页，当前第${page}页
+                        <div class="ibox-tools">
+                            @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                            <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* 监测数据 *@
+        <div class="ibox" style="height:96%" id="emonitordata" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+
+                        <label class="col-md-2 col-lg-3 control-label">企业名称</label>
+                        <div class="col-md-3 col-lg-9" id="EmdName">请选择企业</div>
+
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="ehid" name="ehid" hidden="hidden" />
+                            <div class="form-group col-sm-3">
+                                @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="日汇总", Value="1"},
+                            new SelectListItem(){Text="月汇总", Value="2"},new SelectListItem(){Text="年汇总", Value="3"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                            </div>
+                            <div class="input-daterange form-group col-sm-8">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-1">
+                                <button class="btn btn-primary" type="submit">查询</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <table class="js-table table table-hover" url="@Url.Action("getSumData", "Pollution")">
+                            <thead>
+                                <tr>
+                                    <th>监测时间</th>
+                                    <th>排放量</th>
+                                    <th>COD</th>
+                                    <th>氨氮</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-body">
+                                <tr class="js-template">
+                                    <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                    <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row js-footer">
+                        总共${total}条,共${rows}页，当前第${page}页
+                        <div class="ibox-tools">
+                            @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                            <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* 报警处置 *@
+        <div class="ibox" style="height:96%" id="ealarm" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="col-md-12 col-lg-12" id="EaName">请选择企业</div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a data-toggle="tab" href="#pollutOver">污染物超标</a></li>
+                    <li><a data-toggle="tab" href="#pollutExcept">污染物异常</a></li>
+                    <li><a data-toggle="tab" href="#flowExcept">排放流量异常</a></li>
+                    <li><a data-toggle="tab" href="#dataDrop">数采仪掉线</a></li>
+                    <li><a data-toggle="tab" href="#facilityOutage">治理设施停运</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    @* 污染物超标 *@
+                    <div class="tab-pane active" id="pollutOver">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                                    <input id="eoverhid" name="eoverhid" hidden="hidden"></input>
+                                    <div class="form-group col-sm-3">
+                                        @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="全部", Value="1"},
+                            new SelectListItem(){Text="未处置", Value="2"},new SelectListItem(){Text="待处置", Value="3"}
+                            ,new SelectListItem(){Text="处置完毕", Value="4"}}, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                                    </div>
+                                    <div class="input-daterange form-group col-sm-8">
+                                        起止时间
+                                        <input type="text" class="input-sm " name="minInsertTime" />
+                                        -
+                                        <input type="text" class="input-sm " name="maxInsertTime" />
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <button class="btn btn-primary" type="submit">查询</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <table class="js-table table table-hover" url="@Url.Action("getPollutOverData", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>监测点名称</th>
+                                            <th>污染物名称</th>
+                                            <th>报警门限</th>
+                                            <th>报警值</th>
+                                            <th>处置状态</th>
+                                            <th>报警开始时间</th>
+                                            <th>报警结束时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                            <td class="js-item" name="DataCollectCode">
+                                                <a id="select" name="WasteObjectName" class="btn btn-xs btn-primary" onclick="getPollutOverInfoByID('${WasteObjectName}')">详情</a>
+                                                <a class="btn btn-xs btn-primary" onclick="getPollutOverDealByID('${WasteObjectName}')">处置</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row js-footer">
+                                总共${total}条,共${rows}页，当前第${page}页
+                                <div class="ibox-tools">
+                                    @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                                    <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="pollutExcept">污染物异常...</div>
+                    <div class="tab-pane" id="flowExcept">排放流量异常..</div>
+                    @* 数采仪掉线 *@
+                    <div class="tab-pane" id="dataDrop">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                                    <input id="edraphid" name="edraphid" hidden="hidden"></input>
+                                    <div class="form-group col-sm-3">
+                                        @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="全部", Value="1"},
+                            new SelectListItem(){Text="未处置", Value="2"},new SelectListItem(){Text="待处置", Value="3"}
+                            ,new SelectListItem(){Text="处置完毕", Value="4"}}, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                                    </div>
+                                    <div class="input-daterange form-group col-sm-8">
+                                        起止时间
+                                        <input type="text" class="input-sm " name="minInsertTime" />
+                                        -
+                                        <input type="text" class="input-sm " name="maxInsertTime" />
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <button class="btn btn-primary" type="submit">查询</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <table class="js-table table table-hover" url="@Url.Action("getDataDropData", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>监测点名称</th>
+                                            <th>数采仪MN</th>
+                                            <th>处置状态</th>
+                                            <th>掉线时间</th>
+                                            <th>上线时间</th>
+                                            <th>掉线持续时间(分)</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">
+                                                <button class="btn btn-xs btn-primary" onclick="getDataDropDealByID('${WasteObjectName}')">处置</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row js-footer">
+                                总共${total}条,共${rows}页，当前第${page}页
+                                <div class="ibox-tools">
+                                    @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                                    <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="facilityOutage">.治理设施停运..</div>
+                </div>
+            </div>
+        </div>
+
+        @* 设备状态 *@
+        <div class="ibox" style="height:96%" id="estatus" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="col-md-12 col-lg-12" id="EsName">请选择企业</div>
+                    </div>
+
+                </div>
+
+                <ul class="nav nav-tabs" id="mysTab">
+                    <li class="active"><a data-toggle="tab" href="#dataAcq">数采仪</a></li>
+                    <li><a data-toggle="tab" href="#monitorIns">监测仪器</a></li>
+                    <li><a data-toggle="tab" href="#treatFac">治理设施</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="dataAcq">
+                        <div class="ibox-content">
+                            @* 实时状态内容 *@
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="acqForm" name="acqForm" novalidate="novalidate">
+                                    <input id="eacqhid" name="eacqhid" hidden="hidden" />
+                                    <div class="form-group col-sm-8">
+                                        <strong>实时状态</strong>
+                                    </div>
+                                    <div class="form-group col-sm-4"><button class="btn btn-primary" type="submit">查询</button></div>
+                                </form>
+                            </div>
+                            @* 实时状态数据 *@
+                            <div class="row" style="height:130px;">
+                                <table class="js-table table table-hover" url="@Url.Action("getRealtimeStatus", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>数采仪MN</th>
+                                            <th>在线状态</th>
+                                            <th>状态更新时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="ibox-content">
+                            @* 历史状态选择 *@
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                                    <div class="form-group col-sm-12">
+                                        <strong>历史状态</strong>
+                                        <input id="Radio1" type="radio" name="histime" />当天
+                                        <input id="Radio1" type="radio" name="histime" />本周
+                                        <input id="Radio1" type="radio" name="histime" />本月
+                                        <input id="Radio1" type="radio" name="histime" />其他
+                                    </div>
+                                    <div class="input-daterange form-group col-sm-11">
+                                        时间
+                                        <input type="text" class="input-sm " name="minInsertTime" />
+                                        -
+                                        <input type="text" class="input-sm " name="maxInsertTime" />
+                                    </div>
+                                    <div class="form-group col-sm-1">
+                                        <button class="btn btn-primary" type="submit">查询</button>
+                                    </div>
+                                </form>
+                            </div>
+                            @* 数采仪历史状态表格 *@
+                            <div class="row" style="height:130px;">
+                                <table class="js-table table table-hover" url="@Url.Action("getHistoryStatus", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>数采仪MN</th>
+                                            <th>报警数</th>
+                                            <th>详细</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                            <td class="js-item" name="WasteObjectName">
+                                                <a class="btn btn-xs btn-primary" onclick="getAlarmByID('${WasteObjectName}')">详细</a>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            @* 下方脚注 *@
+                            <div class="row js-footer">
+                                总共${total}条,共${rows}页，当前第${page}页
+                                <div class="ibox-tools">
+                                    <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="monitorIns">.监测仪器..</div>
+                    <div class="tab-pane" id="treatFac">.治理设施..</div>
+                </div>
+            </div>
+        </div>
+
+        @* 基本信息 *@
+        <div class="ibox" style="height:96%" id="ebasicinfo" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <input id="ehid" name="ehid" hidden="hidden"></input>
+                    <table class="form-group col-sm-12">
+                        <tr>
+                            <td style="width:50%">污染源名称：<label id="ename" onchange="eNameChange()"></label></td>
+                            <td style="width:50%">法定代表人：</td>
+                        </tr>
+                        <tr>
+                            <td>法人代码：</td>
+                            <td>污染源地址：</td>
+                        </tr>
+                        <tr><td colspan="2" style="height:10px;"></td></tr>
+                        <tr>
+                            <td>行政区划：</td>
+                            <td>隶属关系：</td>
+                        </tr>
+                        <tr>
+                            <td>行业类别：</td>
+                            <td>注册类型：</td>
+                        </tr>
+                        <tr>
+                            <td>单位类型：</td>
+                            <td>污染源规模：</td>
+                        </tr>
+                        <tr>
+                            <td>占地面积(m2)：</td>
+                            <td>污染源类别：</td>
+                        </tr>
+                        <tr>
+                            <td>是否30万千瓦电力企业：</td>
+                            <td>投产日期：</td>
+                        </tr>
+                        <tr>
+                            <td>关注程度：</td>
+                            <td>地区名称：</td>
+                        </tr>
+                        <tr>
+                            <td>流域：</td>
+                            <td>启动状态：</td>
+                        </tr>
+                        <tr>
+                            <td>在线状态：</td>
+                            <td>运行状态：</td>
+                        </tr>
+                        <tr><td colspan="2" style="height:10px;"></td></tr>
+                        <tr>
+                            <td>通讯地址：</td>
+                            <td>邮政编码：</td>
+                        </tr>
+                        <tr>
+                            <td>联系人：</td>
+                            <td>电子邮箱：</td>
+                        </tr>
+                        <tr>
+                            <td>办公电话：</td>
+                            <td>移动电话：</td>
+                        </tr>
+                        <tr>
+                            <td>传真：</td>
+                            <td>污染源网址：</td>
+                        </tr>
+                        <tr>
+                            <td>中心经度：</td>
+                            <td>中心纬度：</td>
+                        </tr>
+                        <tr>
+                            <td>开户银行：</td>
+                            <td>银行账号：</td>
+                        </tr>
+                        <tr><td colspan="2" style="height:10px;"></td></tr>
+                        <tr>
+                            <td>污染源环保部门：</td>
+                            <td>环保负责人：</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">专职环保人员数：</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">备注：</td>
+                        </tr>
+                    </table>
+                </div>
+                @* 文件相关 *@
+                <div class="row">
+                    <div class="ibox js-lists filebox" style="padding-left:18px;" url="@Url.Action("getAttByE", "Pollution")">
+                        <div class="js-body">
+                            <div class="file-box js-template">
+                                <div class="file">
+                                    <div class="icon js-item" name="FileID">
+                                        <img onclick="GetBigImg('${Name}',this)" class="full-width" id="${FileID}" src="/System/DbFile/${FileID}" />
+                                    </div>
+
+                                    <div class="file-name js-item" name="Name">
+                                        ${Name}
+                                        <br />
+
+                                        @*                                            <small class="js-item" name="Description">附件描述:${Description}</small>
+                                            <br />*@
+                                        <br />
+                                        <div name="AttachID">
+                                            <input type="checkbox" class="i-checks js-item" name="AttachID" value="${AttachID}">
+                                            <small class="js-item" name="InsertTime"><i class="fa fa-clock-o"></i>${InsertTime}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* 脚注 *@
+                <div class="ibox js-footer" style="padding: 18px;">
+                    总共${total}条,共${rows}页，当前第${page}页
+                    <div class="ibox-tools">
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* 实时监控 *@
+        <div class="ibox" style="height:96%" id="wmonitordata" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:95%;">
+                @* 上方信息 *@
+                <div class="row">
+                    <input id="hrealtimeid" type="hidden" />
+                    <div class="form-group col-sm-12">
+                        <label class="col-md-2 col-lg-2 control-label">污染点：</label>
+                        <div class="col-md-8 col-lg-8 control-label" id="WmdName">请选择污染点</div>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="ehid" name="ehid" hidden="hidden" />
+                            <div class="form-group col-sm-3">
+                                @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="实时数据", Value="1"},
+                                    new SelectListItem(){Text="十分钟数据", Value="2"},new SelectListItem(){Text="小时数据", Value="3"},
+                                    new SelectListItem(){Text="日数据", Value="4"},new SelectListItem(){Text="日汇总", Value="5"},
+                                    new SelectListItem(){Text="月汇总", Value="6"},new SelectListItem(){Text="年汇总", Value="7"}
+                                    }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                            </div>
+                            <div class="input-daterange form-group col-sm-8">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-1">
+                                <button class="btn btn-primary" type="submit" onclick="WMonitorData()">查询</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="ibox float-e-margins" style="width: 97%;overflow-y:auto;">
+                            <div id="wchartShow" class="row" style="width:90%">
+                                <div id="wlinechart0" class="wjs-chart line-container col-md-12 col-lg-12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="wbasicinfo" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <input id="ehid" name="ehid" hidden="hidden"></input>
+                    <table class="form-group col-sm-12">
+                        <tr>
+                            <td style="width:50%">监测点名称：<label id="wname" onchange="eNameChange()"></label></td>
+                            <td style="width:50%">监测点位置：</td>
+                        </tr>
+                        <tr>
+                            <td>经度：</td>
+                            <td>纬度：</td>
+                        </tr>
+                        <tr>
+                            <td>排放去向：</td>
+                            <td>排放规律：</td>
+                        </tr>
+                        <tr>
+                            <td>水域功能区类别：</td>
+                            <td>标志牌安装形式：</td>
+                        </tr>
+                        <tr>
+                            <td>流域：</td>
+                            <td>启用状态：</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="ibox js-lists wfilebox" style="padding-left:18px;" url="@Url.Action("getAttByW", "Pollution")">
+                        <div class="js-body">
+                            <div class="file-box js-template">
+                                <div class="file">
+                                    <div class="icon js-item" name="FileID">
+                                        <img onclick="GetBigImg('${Name}',this)" class="full-width" id="${FileID}" src="/System/DbFile/${FileID}" />
+                                    </div>
+
+                                    <div class="file-name js-item" name="Name">
+                                        ${Name}
+                                        <br />
+
+                                        @*                                            <small class="js-item" name="Description">附件描述:${Description}</small>
+                                            <br />*@
+                                        <br />
+                                        <div name="AttachID">
+                                            <input type="checkbox" class="i-checks js-item" name="AttachID" value="${AttachID}">
+                                            <small class="js-item" name="InsertTime"><i class="fa fa-clock-o"></i>${InsertTime}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox js-footer" style="padding: 18px;">
+                    总共${total}条,共${rows}页，当前第${page}页
+                    <div class="ibox-tools">
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="pollutdata" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:95%;">
+                <div class="row">
+                    <input id="hrealtimeid" type="hidden" />
+                    <div class="form-group col-sm-12">
+
+                        <label class="col-md-2 col-lg-2 control-label">污染物：</label>
+                        <div class="col-md-8 col-lg-8 control-label" id="PdName">请选择污染物</div>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="ehid" name="ehid" hidden="hidden"></input>
+                            <div class="form-group col-sm-3">
+                                @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="实时数据", Value="1"},
+                            new SelectListItem(){Text="十分钟数据", Value="2"},new SelectListItem(){Text="小时数据", Value="3"},
+                            new SelectListItem(){Text="日数据", Value="4"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                            </div>
+                            <div class="input-daterange form-group col-sm-8">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-1">
+                                <button class="btn btn-primary" type="submit" onclick="PollutData()">查询</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="ibox float-e-margins" style="width: 97%;overflow-y:auto;">
+                            <div id="pchartShow" class="row" style="width:90%">
+                                <div id="plinechart0" class="pjs-chart line-container col-md-12 col-lg-12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="pollutalarm" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:95%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label class="col-md-2 col-lg-2 control-label">污染物：</label>
+                        <div class="col-md-8 col-lg-4 control-label" id="PaName">请选择污染物</div>
+                        <label class="col-md-2 col-lg-2 control-label">当前状态：</label>
+                        <div class="col-md-8 col-lg-4 control-label" id="PaStatus">正常</div>
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="hpwoid" name="hpwoid" hidden="hidden"></input>
+                            <input id="hpcode" name="hpcode" hidden="hidden"></input>
+                            <div class="form-group col-sm-3">
+                                @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="全部", Value="1"},
+                            new SelectListItem(){Text="超标", Value="2"},new SelectListItem(){Text="异常", Value="3"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                            </div>
+                            <div class="input-daterange form-group col-sm-8">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-1">
+                                <button class="btn btn-primary" type="submit">查询</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <table class="js-table table table-hover" url="@Url.Action("getPollutOverDataByPoll", "Pollution")">
+                            <thead>
+                                <tr>
+                                    <th>报警开始时间</th>
+                                    <th>报警门限</th>
+                                    <th>报警值</th>
+                                    <th>解报时间</th>
+                                    <th>解报值</th>
+                                    <th>报警类型</th>
+                                    <th>处置状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-body">
+                                <tr class="js-template">
+                                    <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                    <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                    <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="DataCollectCode">
+                                        <a id="select" name="WasteObjectName" class="btn btn-xs btn-primary" onclick="getPollutOverInfoByID('${WasteObjectName}')">详情</a>
+                                        <a class="btn btn-xs btn-primary" onclick="getPollutOverDealByID('${WasteObjectName}')">处置</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row js-footer">
+                        总共${total}条,共${rows}页，当前第${page}页
+                        <div class="ibox-tools">
+                            @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                            <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="ddropproc" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:95%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label class="col-md-2 col-lg-3 control-label">数采仪MN号：</label>
+                        <div class="col-md-8 col-lg-4 control-label" id="DdpMN">请选择数采仪</div>
+
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                            <input id="hdwoid" name="hdwoid" hidden="hidden"></input>
+
+                            <div class="input-daterange form-group col-sm-8">
+                                起止时间
+                                <input type="text" class="input-sm " name="minInsertTime" />
+                                -
+                                <input type="text" class="input-sm " name="maxInsertTime" />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <button class="btn btn-primary" type="submit">查询</button>
+                                <button class="btn btn-primary">导出</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <table class="js-table table table-hover" url="@Url.Action("getDropDataByW", "Pollution")">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>正常运行时间</th>
+                                    <th>累积掉线时间</th>
+                                    <th>监控点停运时间</th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-body">
+                                <tr class="js-template">
+                                    <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                    <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                    <td class="js-item" name="WasteObjectName">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row js-footer">
+                        总共${total}条,共${rows}页，当前第${page}页
+                        <div class="ibox-tools">
+                            @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                            <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="dbasicinfo" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <input id="ehid" name="ehid" hidden="hidden"></input>
+                    <table class="form-group col-sm-12">
+                        <tr>
+                            <td style="width:33%">数据采集仪序号：<label id="DbiMN" onchange="eNameChange()"></label></td>
+                            <td style="width:33%">上报ip地址1：</td>
+                            <td style="width:33%">上报端口号1：</td>
+                        </tr>
+                        <tr>
+                            <td>SIM（UIM）卡号：</td>
+                            <td>上报ip地址2：</td>
+                            <td>上报端口号2：</td>
+                        </tr>
+                        <tr>
+                            <td>数据传输方式：</td>
+                            <td>上报ip地址3：</td>
+                            <td>上报端口号3：</td>
+                        </tr>
+                        <tr>
+                            <td>启用日期：</td>
+                            <td>上报ip地址4：</td>
+                            <td>上报端口号4：</td>
+                        </tr>
+                        <tr>
+                            <td>生产厂商：</td>
+                            <td>生产厂商联系电话：</td>
+                            <td>生产厂商联系人：</td>
+                        </tr>
+                        <tr>
+                            <td>运维单位：</td>
+                            <td>运维单位联系电话：</td>
+                            <td>运维单位联系人：</td>
+                        </tr>
+                        <tr>
+                            <td>备注：</td>
+                            <td>启动状态：</td>
+                            <td>是否在线：</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="ibox js-lists wfilebox" style="padding-left:18px;" url="@Url.Action("getAttByW", "Pollution")">
+                        <div class="js-body">
+                            <div class="file-box js-template">
+                                <div class="file">
+                                    <div class="icon js-item" name="FileID">
+                                        <img onclick="GetBigImg('${Name}',this)" class="full-width" id="${FileID}" src="/System/DbFile/${FileID}" />
+                                    </div>
+
+                                    <div class="file-name js-item" name="Name">
+                                        ${Name}
+                                        <br />
+
+                                        @*                                            <small class="js-item" name="Description">附件描述:${Description}</small>
+                                            <br />*@
+                                        <br />
+                                        <div name="AttachID">
+                                            <input type="checkbox" class="i-checks js-item" name="AttachID" value="${AttachID}">
+                                            <small class="js-item" name="InsertTime"><i class="fa fa-clock-o"></i>${InsertTime}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox js-footer" style="padding: 18px;">
+                    总共${total}条,共${rows}页，当前第${page}页
+                    <div class="ibox-tools">
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="mbasicinfo" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <input id="ehid" name="ehid" hidden="hidden"></input>
+                    <table class="form-group col-sm-12">
+                        <tr>
+                            <td style="width:50%">监测仪器名称：<label id="mname" onchange="eNameChange()"></label></td>
+                            <td style="width:50%">监测仪器型号：</td>
+                        </tr>
+                        <tr>
+                            <td>监测点名称：</td>
+                            <td>启用日期：</td>
+                        </tr>
+                        <tr>
+                            <td>最小量程：</td>
+                            <td>最大量程：</td>
+                        </tr>
+                        <tr>
+                            <td>生产厂商：</td>
+                            <td>生产厂商联系人：</td>
+                        </tr>
+                        <tr>
+                            <td>生产厂商联系电话：</td>
+                            <td>运维单位：</td>
+                        </tr>
+                        <tr>
+                            <td>运维单位联系人：</td>
+                            <td>运维单位联系电话：</td>
+                        </tr>
+                        <tr>
+                            <td>生产厂商联系电话：</td>
+                            <td>运维单位：</td>
+                        </tr>
+                        <tr>
+                            <td>通道号：</td>
+                            <td>数据采集仪序号：</td>
+                        </tr>
+                        <tr>
+                            <td>设备出厂编号：</td>
+                            <td>代理商：</td>
+                        </tr>
+                        <tr>
+                            <td>生产许可证编号：</td>
+                            <td>环保产品认证编号：</td>
+                        </tr>
+                        <tr>
+                            <td>启用状态：</td>
+                            <td>备注：</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="ibox js-lists wfilebox" style="padding-left:18px;" url="@Url.Action("getAttByW", "Pollution")">
+                        <div class="js-body">
+                            <div class="file-box js-template">
+                                <div class="file">
+                                    <div class="icon js-item" name="FileID">
+                                        <img onclick="GetBigImg('${Name}',this)" class="full-width" id="${FileID}" src="/System/DbFile/${FileID}" />
+                                    </div>
+
+                                    <div class="file-name js-item" name="Name">
+                                        ${Name}
+                                        <br />
+
+                                        @*                                            <small class="js-item" name="Description">附件描述:${Description}</small>
+                                            <br />*@
+                                        <br />
+                                        <div name="AttachID">
+                                            <input type="checkbox" class="i-checks js-item" name="AttachID" value="${AttachID}">
+                                            <small class="js-item" name="InsertTime"><i class="fa fa-clock-o"></i>${InsertTime}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox js-footer" style="padding: 18px;">
+                    总共${total}条,共${rows}页，当前第${page}页
+                    <div class="ibox-tools">
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="crunstatus" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="col-md-12 col-lg-12" id="CsName">请选择治理设施</div>
+                    </div>
+
+                </div>
+                <ul class="nav nav-tabs" id="mysTab">
+                    <li class="active"><a data-toggle="tab" href="#realRun">实时运行状态</a></li>
+                    <li><a data-toggle="tab" href="#dayRun">日运行情况</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="realRun">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="acqForm" name="acqForm" novalidate="novalidate">
+                                    <input id="eacqhid" name="eacqhid" hidden="hidden"></input>
+                                    <div class="form-group col-sm-3">
+                                        @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="全部", Value="1"},
+                            new SelectListItem(){Text="正常", Value="2"},new SelectListItem(){Text="停运", Value="3"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                                    </div>
+                                    <div class="input-daterange form-group col-sm-8">
+                                        时间
+                                        <input type="text" class="input-sm " name="minInsertTime" />
+                                        -
+                                        <input type="text" class="input-sm " name="maxInsertTime" />
+                                    </div>
+                                    <div class="form-group col-sm-1"><button class="btn btn-primary" type="submit">查询</button></div>
+                                </form>
+                            </div>
+                            <div class="row" style="height:130px;">
+                                <table class="js-table table table-hover" url="@Url.Action("getRealtimeStatus", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>运行状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="dayRun">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <form class="form-horizontal m-t js-search" id="acqForm" name="acqForm" novalidate="novalidate">
+                                    <input id="eacqhid" name="eacqhid" hidden="hidden"></input>
+                                    <div class="form-group col-sm-3">
+                                        @Html.DropDownList("Status", new List<SelectListItem>(){new SelectListItem(){Text="日数据", Value="1"},
+                            new SelectListItem(){Text="月数据", Value="2"},new SelectListItem(){Text="年数据", Value="3"}
+                            }, new { @placeholder = "业务状态...", @class = "chosen-select-width col-sm-11" })
+                                    </div>
+                                    <div class="input-daterange form-group col-sm-8">
+                                        时间
+                                        <input type="text" class="input-sm " name="minInsertTime" />
+                                        -
+                                        <input type="text" class="input-sm " name="maxInsertTime" />
+                                    </div>
+                                    <div class="form-group col-sm-1"><button class="btn btn-primary" type="submit">查询</button></div>
+                                </form>
+                            </div>
+                            <div class="row" style="height:130px;">
+                                <table class="js-table table table-hover" url="@Url.Action("getRealtimeStatus", "Pollution")">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>运行时间（小时）</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="js-body">
+                                        <tr class="js-template">
+                                            <td class="js-item" name="WasteObjectName">${WasteObjectName}</td>
+                                            <td class="js-item" name="DataCollectCode">${DataCollectCode}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox" style="height:96%" id="cbasicinfo" hidden="hidden">
+            <div class="ibox-content no-top-border float-e-margins" style="height:100%;">
+                <div class="row">
+                    <input id="ehid" name="ehid" hidden="hidden"></input>
+                    <table class="form-group col-sm-12">
+                        <tr>
+                            <td style="width:50%">设施名称：<label id="cname" onchange="eNameChange()"></label></td>
+                            <td style="width:50%">污染类型：</td>
+                        </tr>
+                        <tr>
+                            <td>处理方法：</td>
+                            <td>启用状态：</td>
+                        </tr>
+                        <tr>
+                            <td>投入使用日期：</td>
+                            <td>通道号：</td>
+                        </tr>
+                        <tr>
+                            <td>数据采集仪序号：</td>
+                            <td>设计处理能力：</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="ibox js-lists wfilebox" style="padding-left:18px;" url="@Url.Action("getAttByW", "Pollution")">
+                        <div class="js-body">
+                            <div class="file-box js-template">
+                                <div class="file">
+                                    <div class="icon js-item" name="FileID">
+                                        <img onclick="GetBigImg('${Name}',this)" class="full-width" id="${FileID}" src="/System/DbFile/${FileID}" />
+                                    </div>
+
+                                    <div class="file-name js-item" name="Name">
+                                        ${Name}
+                                        <br />
+
+                                        @* <small class="js-item" name="Description">附件描述:${Description}</small> <br />*@
+                                        <br />
+                                        <div name="AttachID">
+                                            <input type="checkbox" class="i-checks js-item" name="AttachID" value="${AttachID}">
+                                            <small class="js-item" name="InsertTime"><i class="fa fa-clock-o"></i>${InsertTime}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ibox js-footer" style="padding: 18px;">
+                    总共${total}条,共${rows}页，当前第${page}页
+                    <div class="ibox-tools">
+                        <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ui-layout-east">
+        <div id="enterprise" hidden="hidden">
+            <h5>企业功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a id="arealtime" onclick="RealtimeMonitor();"><i class="fa fa-folder"></i> 实时监控</a>
+                    @*@Url.Action("RealtimeMonitor", "Pollution", new { id = 13 })*@
+                </li>
+                <li>
+                    <a onclick="EnterpriseHome();"><i class="fa fa-folder"></i> 企业首页</a>
+                </li>
+                <li>
+                    <a onclick="MonitorData();"><i class="fa fa-folder"></i> 监测数据</a>
+                </li>
+                <li>
+                    <a onclick="AlarmDisposal();"><i class="fa fa-folder"></i> 报警处置</a>
+                </li>
+                <li>
+                    <a onclick="EquipStatus();"><i class="fa fa-folder"></i> 设备状态</a>
+                </li>
+                <li>
+                    <a onclick="BasicInfo();"><i class="fa fa-folder"></i> 基本信息</a>
+                </li>
+            </ul>
+        </div>
+        <div id="wasteobject" hidden="hidden">
+            <h5>污染源功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a onclick="WMonitorData();"><i class="fa fa-folder"></i> 监测数据</a>
+                </li>
+                <li>
+                    <a onclick="WBasicInfo();"><i class="fa fa-folder"></i> 基本信息</a>
+                </li>
+            </ul>
+        </div>
+        <div id="pollutant" hidden="hidden">
+            <h5>污染物功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a onclick="PollutData();"><i class="fa fa-folder"></i> 监测数据</a>
+                </li>
+                <li>
+                    <a onclick="PollutAlarm();"><i class="fa fa-folder"></i> 报警处置</a>
+                </li>
+            </ul>
+        </div>
+        <div id="datacollect" hidden="hidden">
+            <h5>数采仪功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a onclick="DDropProc();"><i class="fa fa-folder"></i> 掉线处理</a>
+                </li>
+                @*<li><a href="#"><i class="fa fa-folder"></i> 远程控制</a>
+                    </li>*@
+                <li>
+                    <a onclick="DBasicInfo();"><i class="fa fa-folder"></i> 基本信息</a>
+                </li>
+            </ul>
+        </div>
+        <div id="monitorequip" hidden="hidden">
+            <h5>监测设备功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a onclick="MBasicInfo();"><i class="fa fa-folder"></i> 基本信息</a>
+                </li>
+            </ul>
+        </div>
+        <div id="controlfacility" hidden="hidden">
+            <h5>治理设施功能列表</h5>
+            <ul class="folder-list" style="padding: 0;text-align:center;">
+                <li>
+                    <a onclick="CRunStatus();"><i class="fa fa-folder"></i> 运行状况</a>
+                </li>
+                <li>
+                    <a onclick="CBasicInfo();"><i class="fa fa-folder"></i> 基本信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

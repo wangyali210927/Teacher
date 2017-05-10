@@ -1,0 +1,44 @@
+﻿ 
+/*不设置子DIV宽度，子DIV居中显示*/
+.wrap { width:100%;text-align:center;margin:0 auto;}
+  .inner { display:inline;}
+
+/*设置图片选中样式*/
+.icon-checked {
+    background-image: url(/Content/img/success.png);
+    background-repeat:no-repeat;
+    background-position: 160px 20px;
+}
+
+.small-chat-box-self {
+    width:32%;
+    height: auto;
+    right:20px;
+    top:5px
+}
+.full-body-hegiht {
+    height:100%
+}
+    /*display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 80px;
+    width: 230px;
+    height: 320px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(231, 234, 236);
+    border-radius: 4px;*/
+
+.data-table,.data-table>tbody>tr>td,
+ .data-table>tbody>tr>th, .data-table>tfoot>tr>td, 
+.data-table>tfoot>tr>th, .data-table>thead>tr>td, 
+.data-table>thead>tr>th {
+    border: 1px solid #e7eaec;
+}
+
+.print-table,.print-table>tbody>tr>td,
+ .print-table>tbody>tr>th, .print-table>tfoot>tr>td, 
+.print-table>tfoot>tr>th, .print-table>thead>tr>td, 
+.print-table>thead>tr>th {
+    border: 1px solid #000;
+}

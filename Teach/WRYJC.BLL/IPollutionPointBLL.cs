@@ -11,5 +11,6 @@ namespace WRYJC.BLL
     public interface IPollutionPointBLL
     {
         Response<PollutionPoint> GetAllPollutionPoints();
+        Response<PollutionPoint> GetPollutionPointsByEnterpriseId(decimal id);
     }
 }
