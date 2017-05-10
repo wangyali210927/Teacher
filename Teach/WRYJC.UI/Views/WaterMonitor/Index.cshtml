@@ -8,7 +8,6 @@
     jsFiles.Add("Scripts/common/dataHandler.js");
     jsFiles.Add("Scripts/common/list.js");
     jsFiles.Add("Scripts/init.js");
-    jsFiles.Add("Scripts/PollutionPointDropDownBox.js");
 
     ViewBag.JsModules = jsFiles;
     var csFiles = new List<string>();
@@ -25,7 +24,7 @@
                 <a href="@(Url.Action("Dashboard", "Manage"))">主页</a>
             </li>
             <li>
-                <a href="@(Url.Action("MonitorPoint", "Pollution"))">污染源数据</a>
+                <a href="@(Url.Action("MonitorPoint", "Pollution"))">统计报表</a>
             </li>
             <li>
                 <strong>@ViewData["title"]</strong>
@@ -58,7 +57,7 @@
                                 <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
                                     <div class="row" id="DropDownbox">
                                         <div class="form-group col-sm-3">
-                                            <label class="col-sm-5 control-label">污染点名称：</label>
+                                            <label class="col-sm-5 control-label">污染点：</label>
                                             <div id="PollutionPoint" class="col-sm-6">
                                                 @*<select name="PollutantPoint" data-placeholder="业务状态..." class="chosen-select-width col-sm-11 city" disabled="disabled">*@
                                                 <select name="PollutantPoint" class="chosen-select-width col-sm-11">
@@ -93,6 +92,8 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <button class="btn btn-primary col-sm-1" type="submit">导出</button>
+                                        <button class="btn btn-primary col-sm-1" style="margin-left:20px" type="submit">筛选列</button>
                                     </div>
                                 </form>
                             </div>
@@ -102,148 +103,76 @@
                             <table class="js-lists table table-hover" url="@Url.Action("getGasDayData", "GasMonitor")">
                                 <thead>
                                     <tr>
-                                        <th style="vertical-align:middle;" rowspan="3" tabindex="0">
+                                        <th style="vertical-align:middle;text-align:center;" rowspan="3" tabindex="0">
                                             <div class="th-inner">时间</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="3" tabindex="1">
-                                            <div class="th-inner">烟尘</div>
+                                        <th colspan="2" tabindex="1" style="text-align:center;">
+                                            <div class="th-inner">化学需氧量(COD)</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="3" tabindex="2">
-                                            <div class="th-inner">二氧化硫</div>
+                                        <th colspan="2" tabindex="2" style="text-align:center;">
+                                            <div class="th-inner">氨氮</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="3" tabindex="3">
-                                            <div class="th-inner">氮氧化物</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="4">
+                                        <th colspan="1" tabindex="3" style="text-align:center;">
                                             <div class="th-inner">流量</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="1" tabindex="5">
-                                            <div class="th-inner">氧含量</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="6">
-                                            <div class="th-inner">温度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="7">
-                                            <div class="th-inner">湿度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
                                     </tr>
                                     <tr>
-                                        <th colspan="1" tabindex="8">
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
                                             <div class="th-inner">浓度</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="1" tabindex="8">
-                                            <div class="th-inner">折算浓度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="8">
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
                                             <div class="th-inner">排放量</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="1" tabindex="8">
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
                                             <div class="th-inner">浓度</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="1" tabindex="8">
-                                            <div class="th-inner">折算浓度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="8">
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
                                             <div class="th-inner">排放量</div>
                                             <div class="fht-cell"></div>
                                         </th>
-                                        <th colspan="1" tabindex="8">
-                                            <div class="th-inner">浓度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="8">
-                                            <div class="th-inner">折算浓度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th colspan="1" tabindex="8">
-                                            <div class="th-inner">排放量</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th rowspan="2" tabindex="8">
-                                            <div class="th-inner">立方米</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th rowspan="2" tabindex="8">
-                                            <div class="th-inner">百分比</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th rowspan="2" tabindex="8">
-                                            <div class="th-inner">摄氏度</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th rowspan="2" tabindex="8">
-                                            <div class="th-inner">百分比</div>
+                                        <th colspan="2" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">吨</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>
-                                            <div class="th-inner">毫米/立方米</div>
+                                            <div class="th-inner" style="text-align:center;">毫克/升</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                         <th>
-                                            <div class="th-inner">毫米/立方米</div>
+                                            <div class="th-inner" style="text-align:center;">千克</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                         <th>
-                                            <div class="th-inner">千克</div>
+                                            <div class="th-inner" style="text-align:center;">毫克/升</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                         <th>
-                                            <div class="th-inner">毫米/立方米</div>
+                                            <div class="th-inner" style="text-align:center;">千克</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                         <th>
-                                            <div class="th-inner">毫米/立方米</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th>
-                                            <div class="th-inner">千克</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th>
-                                            <div class="th-inner">毫米/立方米</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th>
-                                            <div class="th-inner">毫米/立方米</div>
-                                            <div class="fht-cell"></div>
-                                        </th>
-                                        <th>
-                                            <div class="th-inner">千克</div>
+                                            <div class="th-inner" style="text-align:center;">吨</div>
                                             <div class="fht-cell"></div>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="js-body">
                                     <tr class="sysuser-element js-template">
-                                        <td class="js-item" name="WasteObjectID">${WasteObjectID}</td>
-                                        <td class="js-item" name="PCode">${PCode}</td>
-                                        <td class="js-item" name="ReceTime">${ReceTime}</td>
-                                        <td class="js-item" name="StrengthMax">${StrengthMax}</td>
-                                        <td class="js-item" name="StrengthAvg">${StrengthAvg}</td>
-                                        <td class="js-item" name="StrengthMin">${StrengthMin}</td>
-                                        <td class="js-item" name="FixStrength">${FixStrength}</td>
-                                        <td class="js-item" name="FlowMax">${FlowMax}</td>
-                                        <td class="js-item" name="FlowAvg">${FlowAvg}</td>
-                                        <td class="js-item" name="FlowMin">${FlowMin}</td>
-                                        <td class="js-item" name="FixFlow">${FixFlow}</td>
-                                        <td class="js-item" name="IsException">${IsException}</td>
-                                        <td class="js-item" name="CorrectUnit">${CorrectUnit}</td>
-                                        <td class="js-item" name="CorrectUser">${CorrectUser}</td>
+                                        <td class="js-item" style="text-align:center;" name="WasteObjectID">${WasteObjectID}</td>
+                                        <td class="js-item" style="text-align:center;" name="PCode">${PCode}</td>
+                                        <td class="js-item" style="text-align:center;" name="ReceTime">${ReceTime}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthMax">${StrengthMax}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthAvg">${StrengthAvg}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthMin">${StrengthMin}</td>
                                     </tr>
                                 </tbody>
                             </table>

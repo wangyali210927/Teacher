@@ -134,7 +134,10 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PollutionController.cs" />
+    <Compile Include="Controllers\PollutionPointAlarmController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
+    <Compile Include="Controllers\WaterMonitorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -492,6 +495,9 @@
     <Content Include="Scripts\ztree\css\awesomeStyle\awesome.less" />
     <Content Include="Scripts\ztree\css\awesomeStyle\fa.less" />
     <Content Include="Scripts\ztree\js\ztree.3.5.26.zip" />
+    <Content Include="Views\WaterMonitor\Index.cshtml" />
+    <Content Include="Views\Statistic\Index.cshtml" />
+    <Content Include="Views\PollutionPointAlarm\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

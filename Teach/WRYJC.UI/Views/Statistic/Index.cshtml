@@ -1,0 +1,172 @@
+﻿@model WRYJC.UI.Models.GasMonitorView
+@{
+    ViewBag.Title = "污染源联网率报表";
+    ViewData["dataSelector"] = ".js-table";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+
+    var jsFiles = new List<string>();
+    jsFiles.Add("Scripts/common/dataHandler.js");
+    jsFiles.Add("Scripts/common/list.js");
+    jsFiles.Add("Scripts/init.js");
+
+    ViewBag.JsModules = jsFiles;
+    var csFiles = new List<string>();
+    csFiles.Add("Content/Common.css");
+    csFiles.Add("Content/framework-ui.css");
+    ViewBag.cssModules = csFiles;
+}
+
+@* 上方位置导航 *@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="@(Url.Action("Dashboard", "Manage"))">主页</a>
+            </li>
+            <li>
+                <a href="@(Url.Action("MonitorPoint", "Pollution"))">统计报表</a>
+            </li>
+            <li>
+                <strong>@ViewData["title"]</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight col-lg-12">
+        <div class="ibox-content no-top-border float-e-margins">
+            @* tabbar 部分 *@
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a data-toggle="tab" href="#VouManage">日数据</a></li>
+                <li><a data-toggle="tab" href="#NotuploadCorrect">月数据</a></li>
+                <li><a data-toggle="tab" href="#NotuploadStop">年数据</a></li>
+            </ul>
+
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="VouManage">
+                    <div class="ibox-content">
+                        @*@Html.Partial("BtnListPartial",ViewData)*@
+                        <div class="row js-alert"></div>
+                        @* 筛选查询部分 *@
+                        <div class="row">
+                            <div class="ibox float-e-margins">
+                                <form class="form-horizontal m-t js-search" id="commentForm" novalidate="novalidate">
+                                    <div class="row" id="DropDownbox">
+                                        <div class="form-group col-sm-3">
+                                            <label class="col-sm-5 control-label">污染点：</label>
+                                            <div id="PollutionPoint" class="col-sm-6">
+                                                @*<select name="PollutantPoint" data-placeholder="业务状态..." class="chosen-select-width col-sm-11 city" disabled="disabled">*@
+                                                <select name="PollutantPoint" class="chosen-select-width col-sm-11">
+                                                    <option value="">请选择</option>
+                                                    @{
+                                                        if (@Model.listPollutionPoints != null)
+                                                        {
+                                                            foreach (WRYJC.DAL.PollutionPoint e in @Model.listPollutionPoints)
+                                                            {
+                                                                <option value=@e.Id>@e.Name</option>
+                                                            }
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label class="col-sm-5 control-label">污染点：</label>
+                                            <div id="PollutionPoint" class="col-sm-6">
+                                                @*<select name="PollutantPoint" data-placeholder="业务状态..." class="chosen-select-width col-sm-11 city" disabled="disabled">*@
+                                                <select name="PollutantPoint" class="chosen-select-width col-sm-11">
+                                                    <option value="">请选择</option>
+                                                    @{
+                                                        if (@Model.listPollutionPoints != null)
+                                                        {
+                                                            foreach (WRYJC.DAL.PollutionPoint e in @Model.listPollutionPoints)
+                                                            {
+                                                                <option value=@e.Id>@e.Name</option>
+                                                            }
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary col-sm-1" type="submit">导出</button>
+                                        <button class="btn btn-primary col-sm-1" style="margin-left:20px" type="submit">筛选列</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @* 表格部分内容 *@
+                        <div class="row">
+                            <table class="js-lists table table-hover" url="@Url.Action("getGasDayData", "GasMonitor")">
+                                <thead>
+                                    <tr>
+                                        <th style="vertical-align:middle;text-align:center;" rowspan="2" tabindex="0">
+                                            <div class="th-inner">时间</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="3" tabindex="1" style="text-align:center;">
+                                            <div class="th-inner">排水口</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="3" tabindex="1" style="text-align:center;">
+                                            <div class="th-inner">排气口</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">实报数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">应报数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">上报率</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">实报数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">应报数</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th colspan="1" tabindex="8" style="text-align:center;">
+                                            <div class="th-inner">上报率</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="js-body">
+                                    <tr class="sysuser-element js-template">
+                                        <td class="js-item" style="text-align:center;" name="WasteObjectID">${WasteObjectID}</td>
+                                        <td class="js-item" style="text-align:center;" name="PCode">${PCode}</td>
+                                        <td class="js-item" style="text-align:center;" name="ReceTime">${ReceTime}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthMax">${StrengthMax}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthAvg">${StrengthAvg}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthMin">${StrengthMin}</td>
+                                        <td class="js-item" style="text-align:center;" name="StrengthMin">${StrengthMin}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        @* 脚注 *@
+                        <div class="row js-footer">
+                            总共${total}条,共${rows}页，当前第${page}页
+                            <div class="ibox-tools">
+                                @*<div class="btn-group js-page" selector="操作列表的名称" listType="列表的类型"></div>*@
+                                <div class="btn-group js-page" selector=".table" listtype="table"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
