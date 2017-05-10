@@ -138,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GasDayDataView.cs" />
+    <Compile Include="Models\GasMonitorView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <Content Include="Content\patterns\shattered.png" />
     <Content Include="Scripts\contabs.min.js" />
     <Content Include="Scripts\hplus.min.js" />
+    <Content Include="Scripts\jquery.cityselect.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -444,6 +446,7 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\Dashboard.cshtml" />
     <Content Include="Views\GasMonitor\Index.cshtml" />
+    <Content Include="Views\GasMonitor\getPollutionPoints.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

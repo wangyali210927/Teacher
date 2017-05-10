@@ -7,3 +7,12 @@ D:\USUAL\Teach\DALTest\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\Teach\DALTest\obj\Debug\WRYJC.DAL.Tests.csprojResolveAssemblyReference.cache
 D:\USUAL\Teach\DALTest\obj\Debug\DALTest.dll
 D:\USUAL\Teach\DALTest\obj\Debug\DALTest.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\DALTest.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\DALTest.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\WRYJC.DAL.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\WRYJC.Domain.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\WRYJC.DAL.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\bin\Debug\WRYJC.Domain.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\obj\Debug\WRYJC.DAL.Tests.csprojResolveAssemblyReference.cache
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\obj\Debug\DALTest.dll
+D:\USUAL\SyncMyGit\Teacher\Teach\DALTest\obj\Debug\DALTest.pdb
