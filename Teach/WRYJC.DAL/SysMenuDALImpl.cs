@@ -24,7 +24,7 @@ namespace WRYJC.DAL
             for (int i = 0;i < userPowers.Count;++ i)
             {
                 SysMenu temp = (from item in db.SysMenu 
-                                      where item.ID == userPowers[i].SysMenuID 
+                                      where item.Id == userPowers[i].SysMenuID 
                                       select item).ToList()[0];
                 menus.Add(temp);
             }

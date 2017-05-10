@@ -47,7 +47,7 @@ namespace WRYJC.UI.Controllers
         }
         public ActionResult getGasDayData(FormCollection form)
         {
-            IGasDataDisplayBLL gasDataBLL = new GasDataDisplayBLLImpl();
+            IGasDayDataBLL gasDataBLL = new GasDayDataBLLImpl();
             Response<GasDayData> res = gasDataBLL.GetDayDataByID(0); ;
             List<GasDayData> list = res.list;
             //bll.GetListByPage2(PageNumber, PageSize, out TotalCount, form, SortField, SortOrder);

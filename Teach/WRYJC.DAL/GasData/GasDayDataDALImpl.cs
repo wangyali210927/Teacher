@@ -17,7 +17,7 @@ namespace WRYJC.DAL
         public Response<GasDayData> GetDayDataByID(decimal id)
         {
             var db = new DataWRYJCDataContext();
-            List<GasDayData> list = (from item in db.GasDayData where (id.Equals(item.ID)) select item).ToList();
+            List<GasDayData> list = (from item in db.GasDayData where (id.Equals(item.Id)) select item).ToList();
             if (list.Count != 1)
                 return new Response<GasDayData>
                 {
@@ -30,12 +30,32 @@ namespace WRYJC.DAL
                 };
         }
         //张雪婷
-        public Response<GasDayData> GetDayDataByDateRange(DateTime from, DateTime to)
+        public Response<GasDayData> GetDayDataByDateRange(DateTime fromDate, DateTime toDate)
         {
             var db = new DataWRYJCDataContext();
-            //List<GasDayData> list = (from item in db.GasDayData where())
-            Response<GasDayData> res = null;
+            List<GasDayData> list = (from item in db.GasDayData
+                                     where DateTime.Compare(Convert.ToDateTime(item.ReceTime), fromDate) > 0
+                                        && DateTime.Compare(Convert.ToDateTime(item.ReceTime), toDate) < 0
+                                     select item).ToList();
+            Response<GasDayData> res = new Response<GasDayData>()
+            {
+                isSuccess = true,
+                list = list
+            };
             return res;
+        }
+
+        public Response<GasDayData> GetDayDataByPollutionPointId(decimal id)
+        {
+            var db = new DataWRYJCDataContext();
+            List<GasDayData> list = (from item in db.GasDayData
+                                     where item.WasteObjectID == id
+                                     select item).ToList();
+            return new Response<GasDayData>()
+            {
+                isSuccess = true,
+                list = list
+            };
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DALTest
         {
             Response<GasDayData> data = new GasDayDataDALImpl().GetDayDataByID(0);
             //Console.WriteLine(data.ID + " " + data.Status);
-            Assert.AreEqual("0", data.list[0].ID);
+            Assert.AreEqual("0", data.list[0].Id);
         }
 
         [TestMethod]
@@ -76,6 +76,13 @@ namespace DALTest
             IPollutionPointDAL target = new PollutionPointDALImpl();
             Response<PollutionPoint> result = target.GetPollutionPointByEnterpriseId(1);
             Assert.AreEqual("废气污染点一号", result.list[0].Name);
+        }
+        [TestMethod]
+        public void TestGetGasDayDataByPollutionPoint()
+        {
+            IGasDayDataDAL target = new GasDayDataDALImpl();
+            Response<GasDayData> result = target.GetDayDataByPollutionPointId(1);
+            Assert.AreEqual("0", result.list[0].Id);
         }
     }
 }

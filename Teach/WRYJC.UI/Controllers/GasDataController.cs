@@ -17,7 +17,7 @@ namespace WRYJC.UI.Controllers
     */
     public class GasDataController : Controller
     {
-        private IGasDataDisplayBLL GasDataDisplay = new GasDataDisplayBLLImpl();
+        private IGasDayDataBLL GasDataDisplay = new GasDayDataBLLImpl();
         //
         // GET: /GasData/
 
@@ -30,7 +30,7 @@ namespace WRYJC.UI.Controllers
             }
             GasDayDataView viewData = new GasDayDataView
             {
-                Id = data.list[0].ID,
+                Id = data.list[0].Id,
                 PollutantPointId = data.list[0].WasteObjectID.ToString()
             };
             return View(viewData);

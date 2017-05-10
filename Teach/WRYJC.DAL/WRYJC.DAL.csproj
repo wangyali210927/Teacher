@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCollectDeviceDALImpl.cs" />
+    <Compile Include="DataCollectDeviceOfflineDALImpl.cs" />
     <Compile Include="DataWRYJC.cs">
       <DependentUpon>DataWRYJC.dbml</DependentUpon>
     </Compile>
@@ -51,6 +53,8 @@
     <Compile Include="EnterpriseDALImpl.cs" />
     <Compile Include="GasData\GasDayDataDALImpl.cs" />
     <Compile Include="GasData\IGasDayDataDAL.cs" />
+    <Compile Include="IDataCollectDeviceDAL.cs" />
+    <Compile Include="IDataCollectDeviceOfflineDAL.cs" />
     <Compile Include="IEnterpriseDAL.cs" />
     <Compile Include="IPollutionPointDAL.cs" />
     <Compile Include="ISysMenuDAL.cs" />

@@ -16,5 +16,7 @@ namespace WRYJC.BLL
     public interface IEnterpriseBLL
     {
         Response<Enterprise> GetAllEnterprises();
+
+        Response<Enterprise> GetEnterpriseById(decimal id);
     }
 }

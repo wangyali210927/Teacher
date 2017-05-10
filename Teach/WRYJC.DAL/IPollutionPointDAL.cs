@@ -15,7 +15,6 @@ namespace WRYJC.DAL
     public interface IPollutionPointDAL
     {
         Response<PollutionPoint> GetAllPollutionPoints();
-
         Response<PollutionPoint> GetPollutionPointByEnterpriseId(decimal id);
     }
 }

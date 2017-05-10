@@ -13,7 +13,7 @@ namespace WRYJC.BLL
     * 2017-05-07 17:00:17
     * 废气数据的BLL层接口实现
     */
-    public class GasDataDisplayBLLImpl : IGasDataDisplayBLL
+    public class GasDayDataBLLImpl : IGasDayDataBLL
     {
         private IGasDayDataDAL gasDayDataDAL = new GasDayDataDALImpl();
         public Response<GasDayData> GetDayDataByID(decimal id)
@@ -49,6 +49,11 @@ namespace WRYJC.BLL
             }
             Response<GasDayData> ret = res;
             return ret;
+        }
+
+        public Response<GasDayData> GetDayDataByPollutionPointId(decimal id)
+        {
+            return gasDayDataDAL.GetDayDataByPollutionPointId(id);
         }
     }
 }

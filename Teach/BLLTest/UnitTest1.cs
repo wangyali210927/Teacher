@@ -20,9 +20,9 @@ namespace BLLTest
         [TestMethod]
         public void GetDayDataTest()
         {
-            IGasDataDisplayBLL dis = new GasDataDisplayBLLImpl();
+            IGasDayDataBLL dis = new GasDayDataBLLImpl();
             Response<GasDayData> data = dis.GetDayDataByID(0); ;
-            Assert.AreEqual("0", data.list[0].ID);
+            Assert.AreEqual("0", data.list[0].Id);
         }
         [TestMethod]
         public void GetUserTest()

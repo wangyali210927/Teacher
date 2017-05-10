@@ -15,5 +15,7 @@ namespace WRYJC.DAL
     public interface IEnterpriseDAL
     {
         Response<Enterprise> GetAllEnterprises();
+
+        Response<Enterprise> GetEnterPriseById(decimal id);
     }
 }

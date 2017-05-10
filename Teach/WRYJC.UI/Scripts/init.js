@@ -1104,7 +1104,7 @@ function WasteObjectChange(selector) {
             //$("#chartShow").html(woid);
             //AddWasteTypeSon(selector, readonly)
             clearInterval(timeid);
-            var url = "/Pollution/getPollutantParaByW";
+            var url = "/Pollution/GetPollutionPointByEnterprise";
             var data = { ID: woid };
             core.ajax(url, data, null, function (data) {
                 if (data["Success"]) {
@@ -1117,8 +1117,7 @@ function WasteObjectChange(selector) {
                 }
             });
             timeid = setInterval(function runajax() {
-
-                var url = "/Pollution/getPollutantParaByW";
+                var url = "/Pollution/GetPollutionPointByEnterprise";
                 var data = { ID: woid };
                 core.ajax(url, data, null, function (data) {
                     if (data["Success"]) {
@@ -2088,9 +2087,3 @@ function ChangeSeriesType(Btn) {
         
     };
 }
-
-
-
-
-
-

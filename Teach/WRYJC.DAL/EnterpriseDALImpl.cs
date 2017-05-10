@@ -19,5 +19,18 @@ namespace WRYJC.DAL
                 isSuccess = true
             };
         }
+
+        public Response<Enterprise> GetEnterPriseById(decimal id)
+        {
+            var db = new DataWRYJCDataContext();
+            List<Enterprise> list = (from item in db.Enterprise
+                                     where item.Id == id
+                                     select item).ToList();
+            return new Response<Enterprise>()
+            {
+                list = list,
+                isSuccess = true
+            };
+        }
     }
 }

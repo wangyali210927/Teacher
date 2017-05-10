@@ -120,7 +120,7 @@
                                 #region 菜单项开始
                                 <li>
                                     @{
-                                var sonListMenu = listMenu.Where(m => m.MasterID != null && m.MasterID == mainMenu.ID).OrderBy(m => m.TheOrder).ToList();
+                                var sonListMenu = listMenu.Where(m => m.MasterID != null && m.MasterID == mainMenu.Id).OrderBy(m => m.TheOrder).ToList();
                                 <a href="javascript:void(0);" class="dropdown-toggle">
                                     <i class="@(mainMenu.MenuIcon)"></i>
                                     <span class="nav-label">@(mainMenu.MenuName)</span>

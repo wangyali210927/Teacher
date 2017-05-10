@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCollectBLLImpl.cs" />
+    <Compile Include="DataCollectDeviceOfflineBLLImpl.cs" />
     <Compile Include="EnterpriseBLLImpl.cs" />
     <Compile Include="Gas\GasDayDataBLLImpl.cs" />
     <Compile Include="Gas\GasHourDataBLLImpl.cs" />
@@ -46,6 +48,8 @@
     <Compile Include="Gas\IGasRTDataBLL.cs" />
     <Compile Include="Gas\IGasDayDataBLL.cs" />
     <Compile Include="Gas\IGasHourDataBLL.cs" />
+    <Compile Include="IDataCollectDeviceBLL.cs" />
+    <Compile Include="IDataCollectDeviceOfflineBLL.cs" />
     <Compile Include="IEnterpriseBLL.cs" />
     <Compile Include="IPollutionPointBLL.cs" />
     <Compile Include="ISysFileBLL.cs" />

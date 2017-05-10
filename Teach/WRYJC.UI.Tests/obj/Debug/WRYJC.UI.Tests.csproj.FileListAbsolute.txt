@@ -72,3 +72,4 @@ D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.UI.Tests\bin\Debug\zh-Hans\System.Web.Web
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.UI.Tests\obj\Debug\WRYJC.UI.Tests.csprojResolveAssemblyReference.cache
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.UI.Tests\obj\Debug\WRYJC.UI.Tests.dll
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.UI.Tests\obj\Debug\WRYJC.UI.Tests.pdb
+D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.UI.Tests\bin\Debug\Base.Data.dll

@@ -17,5 +17,7 @@ namespace WRYJC.DAL
         Response<GasDayData> GetDayDataByID(decimal id);
 
         Response<GasDayData> GetDayDataByDateRange(DateTime from,DateTime to);
+
+        Response<GasDayData> GetDayDataByPollutionPointId(decimal id);
     }
 }

@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Teach" Class="DataWRYJCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Teach;User ID=sa" SettingsObjectName="WRYJC.DAL.Properties.Settings" SettingsPropertyName="TeachConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DataCollectDviceOffline" Member="DataCollectDviceOffline">
+    <Type Name="DataCollectDviceOffline">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PollutionPointId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MN" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="OfflineTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OnlineTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HandlerOrderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Enterprise" Member="Enterprise">
     <Type Name="Enterprise">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -45,7 +55,7 @@
   </Table>
   <Table Name="dbo.GasDayData" Member="GasDayData">
     <Type Name="GasDayData">
-      <Column Name="ID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="WasteObjectID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="PCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ReceTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -84,7 +94,7 @@
   </Table>
   <Table Name="dbo.SysMenu" Member="SysMenu">
     <Type Name="SysMenu">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MasterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MenuIcon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="MenuName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
@@ -93,9 +103,9 @@
       <Column Name="Remark" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Column Name="TheOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="SysMenu_SysMenu" Member="SysMenu2" ThisKey="ID" OtherKey="MasterID" Type="SysMenu" />
-      <Association Name="SysMenu_SysPower" Member="SysPower" ThisKey="ID" OtherKey="SysMenuID" Type="SysPower" />
-      <Association Name="SysMenu_SysMenu" Member="SysMenu1" ThisKey="MasterID" OtherKey="ID" Type="SysMenu" IsForeignKey="true" />
+      <Association Name="SysMenu_SysMenu" Member="SysMenu2" ThisKey="Id" OtherKey="MasterID" Type="SysMenu" />
+      <Association Name="SysMenu_SysPower" Member="SysPower" ThisKey="Id" OtherKey="SysMenuID" Type="SysPower" />
+      <Association Name="SysMenu_SysMenu" Member="SysMenu1" ThisKey="MasterID" OtherKey="Id" Type="SysMenu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SysPower" Member="SysPower">
@@ -108,7 +118,7 @@
       <Column Name="EditTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Association Name="SysPower_SysRoleAndSysPower" Member="SysRoleAndSysPower" ThisKey="Id" OtherKey="SysPowerId" Type="SysRoleAndSysPower" />
-      <Association Name="SysMenu_SysPower" Member="SysMenu" ThisKey="SysMenuID" OtherKey="ID" Type="SysMenu" IsForeignKey="true" />
+      <Association Name="SysMenu_SysPower" Member="SysMenu" ThisKey="SysMenuID" OtherKey="Id" Type="SysMenu" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SysRole" Member="SysRole">
@@ -123,6 +133,15 @@
       <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Association Name="SysRole_SysRoleAndSysPower" Member="SysRoleAndSysPower" ThisKey="Id" OtherKey="SysRoleId" Type="SysRoleAndSysPower" />
       <Association Name="SysRole_SysUserAndSysRole" Member="SysUserAndSysRole" ThisKey="Id" OtherKey="SysRoleId" Type="SysUserAndSysRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysRoleAndSysPower" Member="SysRoleAndSysPower">
+    <Type Name="SysRoleAndSysPower">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SysRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SysPowerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SysPower_SysRoleAndSysPower" Member="SysPower" ThisKey="SysPowerId" OtherKey="Id" Type="SysPower" IsForeignKey="true" />
+      <Association Name="SysRole_SysRoleAndSysPower" Member="SysRole" ThisKey="SysRoleId" OtherKey="Id" Type="SysRole" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SysUser" Member="SysUser">
@@ -148,15 +167,6 @@
       <Association Name="SysUser_SysUserAndSysRole" Member="SysUserAndSysRole" ThisKey="Id" OtherKey="SysUserId" Type="SysUserAndSysRole" />
     </Type>
   </Table>
-  <Table Name="dbo.SysRoleAndSysPower" Member="SysRoleAndSysPower">
-    <Type Name="SysRoleAndSysPower">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SysRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SysPowerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="SysPower_SysRoleAndSysPower" Member="SysPower" ThisKey="SysPowerId" OtherKey="Id" Type="SysPower" IsForeignKey="true" />
-      <Association Name="SysRole_SysRoleAndSysPower" Member="SysRole" ThisKey="SysRoleId" OtherKey="Id" Type="SysRole" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SysUserAndSysRole" Member="SysUserAndSysRole">
     <Type Name="SysUserAndSysRole">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -164,6 +174,32 @@
       <Column Name="SysRoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="SysRole_SysUserAndSysRole" Member="SysRole" ThisKey="SysRoleId" OtherKey="Id" Type="SysRole" IsForeignKey="true" />
       <Association Name="SysUser_SysUserAndSysRole" Member="SysUser" ThisKey="SysUserId" OtherKey="Id" Type="SysUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataCollectDevice" Member="DataCollectDevice">
+    <Type Name="DataCollectDevice">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PollutionPointId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SIMNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DataTransmitProtocol" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DataReceiveTypeId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ManufacturerContactPeople" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ManufacturerContact" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MaintenanceUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaintenanceContactPeople" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MaintenanceContact" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IPAddress1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Port1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IPAddress2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Port2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IPAddress3" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Port3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IPAddress4" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Port4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

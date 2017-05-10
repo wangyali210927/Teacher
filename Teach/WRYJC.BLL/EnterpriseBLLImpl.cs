@@ -15,5 +15,10 @@ namespace WRYJC.BLL
         {
             return enterpriseDal.GetAllEnterprises();
         }
+
+        public Response<Enterprise> GetEnterpriseById(decimal id)
+        {
+            return enterpriseDal.GetEnterPriseById(id);
+        }
     }
 }
