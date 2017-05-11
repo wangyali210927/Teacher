@@ -16,3 +16,13 @@ D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.csprojResolveAssemblyReference.cache
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.dll
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.BLL.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.BLL.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.DAL.dll.config
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\bin\Debug\WRYJC.Domain.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.csprojResolveAssemblyReference.cache
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.BLL\obj\Debug\WRYJC.BLL.pdb

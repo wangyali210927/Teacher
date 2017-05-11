@@ -63,5 +63,14 @@ namespace BLLTest
             Response<PollutionPoint> result = target.GetPollutionPointsByEnterpriseId(1);
             Assert.AreEqual("废气污染点一号",result.list[0].Name);
         }
+        //张晗
+        [TestMethod]
+        public void TestGetDayDataByPollutionPointID()
+        {
+            IGasDataDisplayBLL test = new GasDataDisplayBLLImpl();
+            Response<GasDayData> res = test.getDayDataByPollutionPointID(1);
+            Assert.IsTrue(res.isSuccess, "true");
+
+        }
     }
 }

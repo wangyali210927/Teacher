@@ -77,5 +77,14 @@ namespace DALTest
             Response<PollutionPoint> result = target.GetPollutionPointByEnterpriseId(1);
             Assert.AreEqual("废气污染点一号", result.list[0].Name);
         }
+        //张晗
+        [TestMethod]
+        public void TestGetDayDataByPollutionPointID()
+        {
+            IGasDayDataDAL test = new GasDayDataDALImpl();
+            Response<GasDayData> res = test.getDayDataByPollutionPointID(1);
+            Assert.IsTrue(res.isSuccess, "true");
+
+        }
     }
 }

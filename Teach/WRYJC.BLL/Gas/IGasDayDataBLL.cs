@@ -21,7 +21,8 @@ namespace WRYJC.BLL
         
         Response<GasDayData> GetDayDataByDataRange(DateTime from, DateTime to);
 
+
         //张晗
-        //Response<GasDayData> getDayDataByPollutionPointID(decimal id);
+        Response<GasDayData> getDayDataByPollutionPointID(decimal id);
     }
 }

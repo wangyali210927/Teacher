@@ -50,5 +50,12 @@ namespace WRYJC.BLL
             Response<GasDayData> ret = res;
             return ret;
         }
+        //张晗
+        public Response<GasDayData> getDayDataByPollutionPointID(decimal id)
+        {
+            Response<GasDayData> data = gasDayDataDAL.getDayDataByPollutionPointID(id);
+            return data;
+
+        }
     }
 }

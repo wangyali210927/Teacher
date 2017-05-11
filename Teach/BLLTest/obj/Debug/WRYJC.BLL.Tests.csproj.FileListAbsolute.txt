@@ -20,3 +20,17 @@ D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\WRYJC.BLL.Tests.csprojResolveAssemblyReference.cache
 D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\BLLTest.dll
 D:\USUAL\SyncMyGit\Teacher\Teach\BLLTest\obj\Debug\BLLTest.pdb
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\BLLTest.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\BLLTest.pdb
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.BLL.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.DAL.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.Domain.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.BLL.pdb
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.DAL.pdb
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.DAL.dll.config
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\WRYJC.Domain.pdb
+C:\Users\zhanghan\Teacher\Teach\BLLTest\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\obj\Debug\WRYJC.BLL.Tests.csprojResolveAssemblyReference.cache
+C:\Users\zhanghan\Teacher\Teach\BLLTest\obj\Debug\BLLTest.dll
+C:\Users\zhanghan\Teacher\Teach\BLLTest\obj\Debug\BLLTest.pdb

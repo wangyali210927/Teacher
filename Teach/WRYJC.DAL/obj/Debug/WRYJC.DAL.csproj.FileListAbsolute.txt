@@ -14,3 +14,11 @@ D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.Domain.pdb
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.csprojResolveAssemblyReference.cache
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.dll
 D:\USUAL\SyncMyGit\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.DAL.dll.config
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.DAL.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.DAL.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.Domain.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\bin\Debug\WRYJC.Domain.pdb
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.csprojResolveAssemblyReference.cache
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.dll
+C:\Users\zhanghan\Teacher\Teach\WRYJC.DAL\obj\Debug\WRYJC.DAL.pdb

@@ -37,5 +37,23 @@ namespace WRYJC.DAL
             Response<GasDayData> res = null;
             return res;
         }
+        //张晗
+        public Response<GasDayData> getDayDataByPollutionPointID(decimal id)
+        {
+            var db = new DataWRYJCDataContext();
+            List<GasDayData> list = (from item in db.GasDayData where (id.Equals(item.WasteObjectID)) select item).ToList();
+
+            if (list.Count == 0)
+                return new Response<GasDayData>
+                {
+                    isSuccess = false
+                };
+            else
+                return new Response<GasDayData>
+                {
+                    list = list,
+                    isSuccess = true
+                };
+        }
     }
 }
